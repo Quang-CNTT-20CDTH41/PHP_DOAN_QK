@@ -1,0 +1,175 @@
+/* MAIN */
+#main{
+    .container{
+        #carouselExampleIndicators{
+            .carousel-inner{
+                border-radius: 10px;
+            }
+        }
+
+        .row.mt-3{
+            .col-sm-3{
+                a{  
+                    img{
+                        width: 99%;
+                    }
+                }
+            }
+        }
+        
+        .flash-sale{
+            h2{
+                letter-spacing: 5px;
+            }
+        }
+
+        .content{
+            border-radius: 10px;
+            .product{
+                .header-color:hover{
+                    background: $title-color;
+                }
+            }
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .apple{
+            .col-content{
+                .item{
+                    margin: 5px 5px;
+                    border-radius: 10px;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    .img{
+                        a{
+                            img{
+                                width: 150px;
+                            }
+                        }
+                    }
+                    .header-color:hover{
+                        background: $title-color;
+                    }
+                }
+            }
+        }
+
+        .title-product{
+            overflow: hidden;
+            height: 33px;
+            h4{
+                padding-left: 50px;
+                margin: 0;
+                a{
+                    padding-right: 10px;
+                    color: white;
+                }
+                a:hover{
+                    color: $title-color;
+                }
+            }
+        }
+        
+        .title-product:after{
+            content: " ";
+            border-top: 30px solid #00483d;
+            border-left: 30px solid #009981;
+            margin-left: 20px;
+        }
+
+        .accessory{
+            .content{
+                ul{
+                    padding: 40px 0 0 0;
+                    margin-left: 60px;
+                    flex-wrap: wrap;
+                    li{
+                        width: 130px;
+                        text-align: center;   
+                        margin: 30px 20px;
+                        a{
+                            text-decoration: none;
+                            display: block;
+                            color: $header-color;
+                            span{
+                                display: block;
+                                padding: 24px;
+                                background: #efefef;
+                                border-radius: 10px;
+                                border: 1px solid #efefef;
+                            }
+                        }
+                        a:hover{
+                            span{
+                                border: 1px solid $header-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .covervalue{
+        .item{
+            display: flex;
+            color: $header-color;
+            .icon{
+                font-size: 60px;
+            }
+            .text{    
+                padding: 20px;
+                span, strong{
+                    display: block;
+                }
+            }
+        }
+    }
+    
+    .subscript{
+        .icon-text{
+            .text{
+                padding-top: 40px;
+            }
+        }
+        form{
+            padding-top: 40px;
+            input{
+                width: 300px;
+                padding: 15px;
+                border: none;
+                outline: none;
+                cursor: auto;
+                border-radius: 10px;
+            }
+            button{
+                position: absolute;
+                padding: 15px 25px;
+                border: none;
+                border-radius: 10px 20px;
+                background: $title-color;
+                color: white;
+                margin-left: -20px;
+            }
+        }
+    }
+}
+.owl-carousel{
+    display: flex !important;
+    .owl-nav{
+        position: absolute;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        button{
+            border-radius: 30px !important;
+            background: rgb(233, 233, 233) !important;
+            span{
+                font-size: 40px;
+                color: white;
+                padding: 25px;
+            }
+        }
+    }
+}

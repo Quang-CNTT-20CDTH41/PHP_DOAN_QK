@@ -1,0 +1,382 @@
+/* VARIABLE */
+/* TYPOGRAPHY */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Quicksand:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+.font-quicksand {
+  font-family: "Quicksand", cursive;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", cursive;
+}
+
+.font-anton {
+  font-family: "Anton", cursive;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+/* COLOR */
+.header-color {
+  background: #00483d;
+}
+
+.title-color {
+  background: #009981;
+}
+
+.header-text {
+  color: #00483d;
+}
+
+.text-color {
+  color: #57ffe6;
+}
+
+/* HEADER */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", cursive;
+  background: #f4f4f4;
+}
+
+ul {
+  list-style: none;
+}
+
+/*  NAVBAR  */
+#header {
+  width: 100%;
+}
+#header .top-navigation {
+  width: 100%;
+  display: flex;
+  background: #00483d;
+}
+#header .top-navigation .header-color {
+  margin: 0 auto;
+}
+#header .top-navigation .header-color ul {
+  margin: 0;
+  float: right;
+  display: flex;
+}
+#header .top-navigation .header-color ul li {
+  padding: 0 15px 0 0;
+}
+#header .top-navigation .header-color ul li a {
+  text-decoration: none;
+  font-size: 12px;
+  color: white;
+  font-weight: 600;
+}
+#header .top-navigation .header-color ul li a:hover {
+  color: #57ffe6;
+}
+#header .heading .logo h1 {
+  padding-top: 4px;
+  line-height: 60px;
+  font-weight: 900;
+  font-size: 50px;
+}
+#header .heading .logo h1:hover a {
+  color: #009981;
+}
+#header .heading .search-box {
+  padding: 14px 0;
+}
+#header .heading .search-box form {
+  align-items: center;
+}
+#header .heading .search-box form input {
+  width: 560px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+#header .heading .search-box form button {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-left: -40px;
+  background: linear-gradient(#009981, #00483d);
+}
+#header .heading .search-box form button:hover {
+  background: #009981;
+}
+#header .heading .order-tools {
+  padding-top: 14px;
+}
+#header .heading .order-tools .check-order {
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+#header .heading .order-tools .check-order a {
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  line-height: 42px;
+  font-size: 70%;
+}
+#header .heading .order-tools .check-order:hover {
+  background: #009981;
+}
+#header .heading .order-tools .cart a i:first-child {
+  color: #00483d;
+}
+#header .heading .order-tools .cart a #cart-total {
+  margin-left: -8px;
+  border-radius: 5px;
+}
+#header .heading .order-tools .cart a:hover i {
+  color: #009981;
+}
+#header .navbar {
+  z-index: 1000;
+}
+#header .navbar .header-color {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+#header .navbar .header-color ul {
+  margin: 0 auto;
+}
+#header .navbar .header-color ul li a {
+  color: white;
+  text-align: center;
+}
+#header .navbar .header-color ul li a i {
+  font-size: 20px;
+  padding-top: 7px;
+}
+#header .navbar .header-color ul li a span {
+  display: block;
+}
+#header .navbar .header-color .menu {
+  display: flex;
+}
+#header .navbar .header-color .menu a {
+  text-decoration: none;
+  color: #fff;
+}
+#header .navbar .header-color .menu ul {
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  top: 70px;
+  padding: 0;
+  left: 0;
+  display: none;
+  border-radius: 10px;
+}
+#header .navbar .header-color .menu ul ul {
+  left: 150px;
+  top: 0;
+}
+#header .navbar .header-color .menu .nav-item {
+  width: 150px;
+  line-height: 1.5rem;
+  position: relative;
+  text-align: center;
+  padding: 5px;
+  background: #00483d;
+}
+#header .navbar .header-color .menu .nav-item a:hover {
+  color: #009981;
+}
+
+.login {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.login .img-login {
+  background: #ffb6ce;
+}
+.login .splice {
+  border-bottom: 2px solid gray;
+  height: 15px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.login .splice p {
+  position: absolute;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* MAIN */
+#main .container #carouselExampleIndicators .carousel-inner {
+  border-radius: 10px;
+}
+#main .container .row.mt-3 .col-sm-3 a img {
+  width: 99%;
+}
+#main .container .flash-sale h2 {
+  letter-spacing: 5px;
+}
+#main .container .content {
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#main .container .content .product .header-color:hover {
+  background: #009981;
+}
+#main .container .apple .col-content .item {
+  margin: 5px 5px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#main .container .apple .col-content .item .img a img {
+  width: 150px;
+}
+#main .container .apple .col-content .item .header-color:hover {
+  background: #009981;
+}
+#main .container .title-product {
+  overflow: hidden;
+  height: 33px;
+}
+#main .container .title-product h4 {
+  padding-left: 50px;
+  margin: 0;
+}
+#main .container .title-product h4 a {
+  padding-right: 10px;
+  color: white;
+}
+#main .container .title-product h4 a:hover {
+  color: #009981;
+}
+#main .container .title-product:after {
+  content: " ";
+  border-top: 30px solid #00483d;
+  border-left: 30px solid #009981;
+  margin-left: 20px;
+}
+#main .container .accessory .content ul {
+  padding: 40px 0 0 0;
+  margin-left: 60px;
+  flex-wrap: wrap;
+}
+#main .container .accessory .content ul li {
+  width: 130px;
+  text-align: center;
+  margin: 30px 20px;
+}
+#main .container .accessory .content ul li a {
+  text-decoration: none;
+  display: block;
+  color: #00483d;
+}
+#main .container .accessory .content ul li a span {
+  display: block;
+  padding: 24px;
+  background: #efefef;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+}
+#main .container .accessory .content ul li a:hover span {
+  border: 1px solid #00483d;
+}
+#main .covervalue .item {
+  display: flex;
+  color: #00483d;
+}
+#main .covervalue .item .icon {
+  font-size: 60px;
+}
+#main .covervalue .item .text {
+  padding: 20px;
+}
+#main .covervalue .item .text span, #main .covervalue .item .text strong {
+  display: block;
+}
+#main .subscript .icon-text .text {
+  padding-top: 40px;
+}
+#main .subscript form {
+  padding-top: 40px;
+}
+#main .subscript form input {
+  width: 300px;
+  padding: 15px;
+  border: none;
+  outline: none;
+  cursor: auto;
+  border-radius: 10px;
+}
+#main .subscript form button {
+  position: absolute;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 10px 20px;
+  background: #009981;
+  color: white;
+  margin-left: -20px;
+}
+
+.owl-carousel {
+  display: flex !important;
+}
+.owl-carousel .owl-nav {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.owl-carousel .owl-nav button {
+  border-radius: 30px !important;
+  background: #e9e9e9 !important;
+}
+.owl-carousel .owl-nav button span {
+  font-size: 40px;
+  color: white;
+  padding: 25px;
+}
+
+/* FOOTER */
+#footer .header-color {
+  border-radius: 15px;
+}
+#footer .header-color .link-content {
+  padding: 20px;
+}
+#footer .header-color .link-content h5:hover a {
+  color: #009981;
+}
+#footer .header-color .link-content a {
+  color: white;
+  text-decoration: none;
+}
+#footer .header-color .link-content ul {
+  padding: 0;
+}
+#footer .header-color .link-content ul li:hover a {
+  color: #57ffe6;
+}
+#footer .header-color .link-content .list-logo li img {
+  padding: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

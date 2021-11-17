@@ -1,0 +1,21 @@
+/* TYPOGRAPHY */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Quicksand:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.font-quicksand{
+    font-family: $font-quicksand;
+}
+.font-montserrat{
+    font-family: $font-montserrat;
+}
+.font-anton{
+    font-family: $font-anton;
+}
+.font-size-12{
+    font-size: 12px;
+}
+.font-size-16{
+    font-size: 16px;
+}
+.font-size-20{
+    font-size: 20px;
+}

@@ -1,0 +1,20 @@
+.login{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    .img-login{
+        background: rgb(255, 182, 206);
+    }
+    .splice{
+        border-bottom: 2px solid gray;
+        height: 15px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        p{
+            position: absolute;
+            background: #f4f4f4;
+            text-align: center;
+            padding:  0 10px;
+
+        }
+    }
+}
