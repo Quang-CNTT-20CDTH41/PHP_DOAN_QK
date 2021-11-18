@@ -1,5 +1,4 @@
 <?php
-require_once('./php/db/xuly-login.php')
 ?>
 <!-- LOGIN -->
 <div class="container my-5">
@@ -11,9 +10,11 @@ require_once('./php/db/xuly-login.php')
             <div class="login-title mx-2">
                 <?php
                 if(isset($_GET['dangky'])) require_once('./php/include/login/createAcc.php');
+                else if(isset($_GET['account']))require_once('./php/include/login/account.php');
                 else require_once('./php/include/login/dangnhap.php');
                 ?>
             </div>
+            <a href='./index.php' class="text-decoration-none mx-4"><i class="bi bi-arrow-left-short"></i>Trở lại</a>
         </div>
     </div>
 </div>

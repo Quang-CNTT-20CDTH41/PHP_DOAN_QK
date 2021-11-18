@@ -37,8 +37,15 @@
                     <li><a href="">Hệ thống 78 siêu thị</a></li>
                     <li><a href="">Tuyển dụng</a></li>
                     <li><a href="">Tra cứu đơn hàng</a></li>
-                    <li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>
-                    <li><a href="./index.php?page=login&dangky">Đăng ký</a></li>
+                    <?php
+                        if(isset($_SESSION['userLogin'])){
+                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['userLogin'].'</a></li>
+                            <li><a href="./index.php?page=login&dangxuat">Đăng xuất</a></li>';
+                        }else{
+                            echo '<li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>
+                            <li><a href="./index.php?page=login&dangky">Đăng ký</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

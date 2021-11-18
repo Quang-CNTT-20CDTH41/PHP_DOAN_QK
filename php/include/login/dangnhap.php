@@ -22,7 +22,7 @@
             <div class="row">
                 <label for="username" class="col-form-label col-sm-3"><h4>Tài khoản</h4></label>
                 <div class="col-sm-9">
-                    <input type="text" name="username" id="user" placeholder="Nhập tài khoản" class="form-control">
+                    <input type="text" name="username" id="user" placeholder="Nhập tài khoản" class="form-control" value="<?= $userLogin?>">
                 </div>
             </div>
             <div class="row">
