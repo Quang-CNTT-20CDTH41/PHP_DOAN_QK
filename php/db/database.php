@@ -1,26 +1,26 @@
 <?php
 function execute($sql){
-    $con = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
+    require 'connect.php';
     mysqli_query($con, $sql);
-    require_once 'close.php';
+    require 'close.php';
 }
 
 function executeResult($sql){
-    require_once 'connect.php';
+    require 'connect.php';
     $result = mysqli_query($con, $sql);
     $data = [];
     while($row = mysqli_fetch_array($result,1)){
         $data[] = $row;
     }
-    require_once 'close.php';
+    require 'close.php';
     return $data;
 }
 
 function executeSingleResult($sql){
-    require_once 'connect.php';
+    require 'connect.php';
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result, 1);
-    require_once 'close.php';
+    require 'close.php';
     return $row;
 }
 

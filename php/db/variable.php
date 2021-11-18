@@ -1,6 +1,6 @@
 <?php
 $username = $fullname = $password = $confirm = $email = $gender = '';
-$birthday = $phonenumber = $address = $terms = '';
+$birthday = $phonenumber = $address = $terms = $passwordLogin = $userLogin = '';
 
 $usernameErr = $passwordErr = $fullnameErr = $confirmErr = $emailErr = $genderErr = '';
 $birthdayErr = $phonenumberErr = $addressErr = $termsErr = '';
@@ -34,6 +34,7 @@ function variable_password($pwd)
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    // CREATE ACCOUNT
     if(isset($_POST['create'])){
         if(empty($_POST['username'])){
             $usernameErr = 'Vui lòng nhập tài khoản!';
@@ -103,4 +104,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $terms = $_POST['terms'];
         }
     }
+    // !CREATE ACCOUNT
 }
