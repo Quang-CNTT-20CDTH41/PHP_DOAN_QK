@@ -37,7 +37,8 @@
                     <li><a href="">Hệ thống 78 siêu thị</a></li>
                     <li><a href="">Tuyển dụng</a></li>
                     <li><a href="">Tra cứu đơn hàng</a></li>
-                    <li><a href="./index.php?page=login">Đăng nhập</a></li>
+                    <li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>
+                    <li><a href="./index.php?page=login&dangky">Đăng ký</a></li>
                 </ul>
             </div>
         </div>
@@ -86,55 +87,6 @@
                         recursiveMenu($query, 0, $newMenu, true);
                         echo str_replace('<ul></ul>','',$newMenu);
                     ?>
-                    <!-- <ul class="nav menu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">
-                                <i class="bi bi-house"></i>
-                                <span>Trang chủ</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-phone"></i>
-                                <span>Điện thoại</span>
-                            </a>
-                            <ul>
-                                <li><a href="">Samsung</a></li>
-                                <li><a href="">Apple</a></li>
-                                <li><a href="">Xiaomi</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-tv"></i>
-                                <span>Máy tính bàn</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-laptop"></i>
-                                <span>Laptop</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-smartwatch"></i>
-                                <span>Apple Watch</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                            <i class="bi bi-hdmi"></i>
-                                <span>Phụ kiện</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-newspaper"></i>
-                                <span>Tin tức</span>
-                            </a>
-                        </li>
-                    </ul> -->
                 </div>
             </div>
         </div>

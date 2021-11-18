@@ -1,6 +1,6 @@
 <?php
 function execute($sql){
-    require_once 'connect.php';
+    $con = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     mysqli_query($con, $sql);
     require_once 'close.php';
 }
