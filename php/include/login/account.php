@@ -1,4 +1,3 @@
-
 <div class="container">
     <h4 class="text-center">Thông tin khách hàng</h4>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -44,6 +43,7 @@
                 </div>
             </div>
             <!-- HIỂN THỊ THÔNG TIN TÀI KHOẢN -->
+            
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <!-- THAY ĐỔI THÔNG TIN TÀI KHOẢN -->
             <div class="row">
@@ -51,7 +51,7 @@
                     <div class="row my-1">
                         <label for="fullname" class="col-form-label col-sm-3"><h6>Họ và Tên</h6></label>
                         <div class="col-sm-5">
-                            <input type="text" name="changefn" id="fullname" class="form-control" value="<?= $_SESSION['info'][0]?>">
+                            <input type="text" name="fullname" id="fullname" class="form-control" value="<?= $_SESSION['info'][0] ?>">
                         </div>
                         <div class="col-sm-4">
                             <span class="text-danger">* <?php echo $fullnameErr?></span>
@@ -100,7 +100,7 @@
                     <div class="row my-1">
                         <label for="birthday" class="col-form-label col-sm-3"><h6>Ngày sinh</h6></label>
                         <div class="col-sm-5">
-                            <input type="date" name="birthday" id="birthday" class="form-control">
+                            <input type="date" name="birthday" id="birthday" class="form-control" <?= $_SESSION['info'][0]?>>
                         </div>
                     </div>
                     <div class="row">

@@ -1,4 +1,5 @@
 <?php
+
 function execute($sql){
     require 'connect.php';
     mysqli_query($con, $sql);

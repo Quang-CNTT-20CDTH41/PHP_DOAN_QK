@@ -70,7 +70,7 @@
         <div class="row">
             <label for="phonenumber" class="col-form-label col-sm-3"><h6>Số điện thoại</h6></label>
             <div class="col-sm-5">
-                <input type="phone" name="phonenumber" id="phonenumber" class="form-control" placeholder="070-805-0907" value="<?= $phonenumber?>">
+                <input type="phone" name="phonenumber" id="phonenumber" class="form-control" placeholder="0708050907" value="<?= $phonenumber?>">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger">* <?php echo $phonenumberErr?></span>

@@ -39,7 +39,7 @@
                     <li><a href="#">Tra cứu đơn hàng</a></li>
                     <?php
                         if(isset($_SESSION['userLogin'])){
-                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['info'][0].'</a></li>
+                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['info'][0] .'</a></li>
                             <li><a href="./index.php?page=login&dangxuat">Đăng xuất</a></li>';
                         }else{
                             echo '<li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>

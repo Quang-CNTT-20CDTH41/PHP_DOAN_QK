@@ -1,4 +1,6 @@
+@charset "UTF-8";
 /* VARIABLE */
+/* !VARIABLE */
 /* TYPOGRAPHY */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Quicksand:wght@300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
@@ -26,6 +28,7 @@
   font-size: 20px;
 }
 
+/* !TYPOGRAPHY */
 /* COLOR */
 .header-color {
   background: #00483d;
@@ -43,7 +46,8 @@
   color: #57ffe6;
 }
 
-/* HEADER */
+/* !COLOR */
+/* ___HEADER____ */
 * {
   margin: 0;
   padding: 0;
@@ -203,6 +207,8 @@ ul {
   color: #009981;
 }
 
+/* !___HEADER____ */
+/* ____ LOGIN _____*/
 .login {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
@@ -223,6 +229,7 @@ ul {
   padding: 0 10px;
 }
 
+/* ____ !LOGIN _____*/
 /* MAIN */
 #main .container #carouselExampleIndicators .carousel-inner {
   border-radius: 10px;
@@ -355,6 +362,7 @@ ul {
   padding: 25px;
 }
 
+/* !____MAIN____ */
 /* FOOTER */
 #footer .header-color {
   border-radius: 15px;
@@ -378,5 +386,9 @@ ul {
 #footer .header-color .link-content .list-logo li img {
   padding: 5px;
 }
+
+/* FOOTER */
+/* GIỎ HÀNG */
+/* !GIỎ HÀNG */
 
 /*# sourceMappingURL=style.css.map */
