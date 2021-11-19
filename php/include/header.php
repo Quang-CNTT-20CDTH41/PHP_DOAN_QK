@@ -30,16 +30,16 @@
         <div class="top-navigation">
             <div class="container header-color">
                 <ul>
-                    <li><a href="">Bản mobile</a></li>
-                    <li><a href="">Giới thiệu</a></li>
-                    <li><a href="">Sản phẩm đã xem</a></li>
-                    <li><a href="">Trung tâm bảo hành</a></li>
-                    <li><a href="">Hệ thống 78 siêu thị</a></li>
-                    <li><a href="">Tuyển dụng</a></li>
-                    <li><a href="">Tra cứu đơn hàng</a></li>
+                    <li><a href="#">Bản mobile</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Sản phẩm đã xem</a></li>
+                    <li><a href="#">Trung tâm bảo hành</a></li>
+                    <li><a href="#">Hệ thống 78 siêu thị</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Tra cứu đơn hàng</a></li>
                     <?php
                         if(isset($_SESSION['userLogin'])){
-                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['userLogin'].'</a></li>
+                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['info'][0].'</a></li>
                             <li><a href="./index.php?page=login&dangxuat">Đăng xuất</a></li>';
                         }else{
                             echo '<li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>

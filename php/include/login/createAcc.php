@@ -52,11 +52,11 @@
             <label for="" class="col-form-label col-sm-3"><h6>Giới tính</h6></label>
             <div class="col-sm-5">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="Nam">
                     <label class="form-check-label" for="male">Nam</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="Nữ">
                     <label class="form-check-label" for="female">Nữ</label>
                 </div>
             </div>

@@ -18,23 +18,55 @@ if(isset($_POST['login'])){
         $passwordLogin = md5($_POST['password']);
     }
 
-    if(isset($_POST['memorize'])){
-        $memorize = $_POST['memorize'];
-    }
-
     $sqlLogin = 'select * from `user` where user_name = "' . $userLogin . '"';
     $resultLogin = executeSingleResult($sqlLogin);
 
+    // XÁC NHẬN MẬT KHẨU
     if($resultLogin > 0){
         if($passwordLogin == $resultLogin['password']){
             $_SESSION['userLogin'] = $userLogin;
+            
+            // LƯU THÔNG TIN BẰNG SESSION
+            if(isset($_POST['memorize'])){
+                if (empty($_SESSION['info'])) {
+                    $info = array();
+                    $info[0] = $resultLogin['hoten'];
+                    $info[1] = $resultLogin['gender'];
+                    $info[2] = $resultLogin['user_name'];
+                    $info[3] = $resultLogin['password'];
+                    $info[4] = $resultLogin['birthday'];
+                    $info[5] = $resultLogin['address'];
+                    $info[6] = $resultLogin['email'];
+                    $info[7] = $resultLogin['phone'];
+                    $_SESSION['info'] = $info;
+                }
+            }else{
+                if (empty($_SESSION['info'])) {
+                    $info = array();
+                    $info[0] = $resultLogin['hoten'];
+                    $info[1] = $resultLogin['gender'];
+                    $info[2] = $resultLogin['user_name'];
+                    $info[3] = $resultLogin['password'];
+                    $info[4] = $resultLogin['birthday'];
+                    $info[5] = $resultLogin['address'];
+                    $info[6] = $resultLogin['email'];
+                    $info[7] = $resultLogin['phone'];
+                    $_SESSION['info'] = $info;
+                } 
+            }
             header('Location: index.php');
+
         } else echo '<script>alert("Sai thông tin mật khẩu");</script>';
+
+        
     }else echo '<script>alert("Sai thông tin tài khoản");</script>';
+
+    
 }
 
 if(isset($_GET['dangxuat'])){
-    unset($_SESSION['userLogin']);
+    session_destroy();
     header('Location: index.php');
+    die();
 }
 

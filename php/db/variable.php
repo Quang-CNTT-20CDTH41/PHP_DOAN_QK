@@ -16,9 +16,10 @@ function variable_text ($value) {
 // kiem tra phone
 function validatePhone($data)
 {
-    $v = "/^[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}$/";
+    $v = "/^[0]{1}[0-9]{2}[0-9]{3}[0-9]{4}$/";
     return preg_match($v, $data);
 }
+
 // kiểm tra password
 function variable_password($pwd)
 {
@@ -34,7 +35,7 @@ function variable_password($pwd)
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    // CREATE ACCOUNT
+    // Lấy thông tin tạo tài tài khoản
     if(isset($_POST['create'])){
         if(empty($_POST['username'])){
             $usernameErr = 'Vui lòng nhập tài khoản!';
@@ -104,5 +105,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $terms = $_POST['terms'];
         }
     }
-    // !CREATE ACCOUNT
+    // !Lấy thông tin tạo tài khoản
 }
