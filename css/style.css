@@ -20,6 +20,10 @@
   font-size: 12px;
 }
 
+.font-size-14 {
+  font-size: 14px;
+}
+
 .font-size-16 {
   font-size: 16px;
 }
@@ -161,6 +165,9 @@ ul {
 #header .navbar .header-color {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+#header .navbar .header-color a:hover h3 {
+  color: #009981;
+}
 #header .navbar .header-color ul {
   margin: 0 auto;
 }
@@ -247,15 +254,16 @@ ul {
 #main .container .content .product .header-color:hover {
   background: #009981;
 }
-#main .container .apple .col-content .item {
+#main .container .smart-phone .col-content .item, #main .container .all-product .col-content .item {
+  width: 250px;
   margin: 5px 5px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-#main .container .apple .col-content .item .img a img {
+#main .container .smart-phone .col-content .item .img a img, #main .container .all-product .col-content .item .img a img {
   width: 150px;
 }
-#main .container .apple .col-content .item .header-color:hover {
+#main .container .smart-phone .col-content .item .header-color:hover, #main .container .all-product .col-content .item .header-color:hover {
   background: #009981;
 }
 #main .container .title-product {
@@ -275,8 +283,8 @@ ul {
 }
 #main .container .title-product:after {
   content: " ";
-  border-top: 30px solid #00483d;
-  border-left: 30px solid #009981;
+  border-top: 31px solid #00483d;
+  border-left: 31px solid #009981;
   margin-left: 20px;
 }
 #main .container .accessory .content ul {
@@ -339,27 +347,6 @@ ul {
   background: #009981;
   color: white;
   margin-left: -20px;
-}
-
-.owl-carousel {
-  display: flex !important;
-}
-.owl-carousel .owl-nav {
-  position: absolute;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-}
-.owl-carousel .owl-nav button {
-  border-radius: 30px !important;
-  background: #e9e9e9 !important;
-}
-.owl-carousel .owl-nav button span {
-  font-size: 40px;
-  color: white;
-  padding: 25px;
 }
 
 /* !____MAIN____ */

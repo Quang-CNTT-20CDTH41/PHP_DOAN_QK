@@ -31,8 +31,8 @@ function recursiveMenu($sourceArr, $parent = 0, &$newMenu, $sub = true){
         $newMenu .= $sub ? '<ul class="nav menu">' : '<ul>';
         foreach($sourceArr as $key => $value){
             if($value['parent'] == $parent){
-                $t = ($parent == 0) ? 'page' : 'product';
-                $newMenu .= '<li class="nav-item"><a href="index.php?'.$t.'='.$value['url'].'" class="nav-link">'.$value['icon_menu'].'<span>'.$value['name'].'</span></a>';
+                $page = ($parent == 0) ? 'page=product' : "page=product&".$value['url']."";
+                $newMenu .= '<li class="nav-item"><a href="index.php?page=product&' . $value['url'] . '" class="nav-link">'.$value['icon_menu'].'<span>'.$value['name'].'</span></a>';
                 $newParent = $value['menu_id'];
                 unset($sourceArr[$key]);
                 recursiveMenu($sourceArr, $newParent, $newMenu, $sub = false);
@@ -40,4 +40,57 @@ function recursiveMenu($sourceArr, $parent = 0, &$newMenu, $sub = true){
         }
         $newMenu .= '</ul>';
     }    
+}
+
+function product($sql){
+    foreach($sql as $item){
+        echo '
+        <div class="item bg-white py-4 px-1">
+            <div class="img py-2">
+                <a href="#"><img src="'. $item['product_img'] .'" alt=""></a>
+            </div>
+            <div class="info  py-1">
+                <a href="#" class="text-decoration-none text-black fw-bold">'. $item['product_name'] .'</a>
+                <div class="price">
+                    <span class="text-danger fw-bold">'. number_format($item['product_price']) .' VNĐ</span>
+                    <del class="font-size-14">'. number_format($item['price_sale']) .' VNĐ</del>
+                </div>
+            </div>
+            <div class="note py-1">
+                <span>'. $item['descript'] .'</span>
+            </div>
+            <div class="header-color p-1 w-75 m-auto rounded">
+                <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
+            </div>
+        </div>';
+    }
+}
+
+function singleProduct ($sql) {
+    foreach($sql as $item){
+        echo '<div class="item">
+        <div class="product">
+            <a href="#"><img src="'. $item['product_img'].'"></a>
+            <div class="text-center mt-2">
+                <h6>'. $item['product_name'].'</h6>
+                <div class="rating text-warning">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                </div>
+                <div class="price">
+                    <span class="fw-bold">'. number_format($item['product_price']) .' VNĐ</span>
+                </div>
+                <div class="old-price text-danger">
+                    <del>'. number_format($item['price_sale']).' VND</del>
+                </div>
+                <div class="header-color p-1 w-75 m-auto rounded">
+                    <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
+                </div>
+            </div>
+        </div>
+    </div>';
+    }        
 }

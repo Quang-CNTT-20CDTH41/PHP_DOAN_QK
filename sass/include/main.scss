@@ -33,9 +33,10 @@
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
 
-        .apple{
+        .smart-phone, .all-product{
             .col-content{
                 .item{
+                    width: 250px;
                     margin: 5px 5px;
                     border-radius: 10px;
                     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -71,8 +72,8 @@
         
         .title-product:after{
             content: " ";
-            border-top: 30px solid #00483d;
-            border-left: 30px solid #009981;
+            border-top: 31px solid #00483d;
+            border-left: 31px solid #009981;
             margin-left: 20px;
         }
 
@@ -152,25 +153,6 @@
             }
         }
     }
-}
-.owl-carousel{
-    display: flex !important;
-    .owl-nav{
-        position: absolute;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        height: 100%;
-        button{
-            border-radius: 30px !important;
-            background: rgb(233, 233, 233) !important;
-            span{
-                font-size: 40px;
-                color: white;
-                padding: 25px;
-            }
-        }
-    }
+
 }
 /* !____MAIN____ */

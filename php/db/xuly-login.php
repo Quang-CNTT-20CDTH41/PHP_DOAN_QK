@@ -26,7 +26,6 @@ if(isset($_POST['login'])){
 
     $sqlLogin = 'select * from `user` where user_name = "' . $userLogin . '"';
     $resultLogin = executeSingleResult($sqlLogin);
-
     // XÁC NHẬN MẬT KHẨU
     if($resultLogin > 0){
         if($passwordLogin == $resultLogin['password']){
@@ -44,6 +43,7 @@ if(isset($_POST['login'])){
                     $info[5] = $resultLogin['address'];
                     $info[6] = $resultLogin['email'];
                     $info[7] = $resultLogin['phone'];
+                    $info[8] = $resultLogin['level'];
                     $_SESSION['info'] = $info;
                 }
             }else{
@@ -57,6 +57,7 @@ if(isset($_POST['login'])){
                     $info[5] = $resultLogin['address'];
                     $info[6] = $resultLogin['email'];
                     $info[7] = $resultLogin['phone'];
+                    $info[8] = $resultLogin['level'];
                     $_SESSION['info'] = $info;
                 } 
             }
@@ -65,7 +66,8 @@ if(isset($_POST['login'])){
         } else echo '<script>alert("Sai thông tin mật khẩu");</script>';
 
         
-    }else echo '<script>alert("Sai thông tin tài khoản");</script>';
+    }
+    else echo '<script>alert("Sai thông tin tài khoản");</script>';
 
     
 }

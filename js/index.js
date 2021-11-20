@@ -13,12 +13,11 @@ $(function(){
 // BANNER
 $('.owl-carousel').owlCarousel({
         loop: true,
-        margin: 10,
+        margin: 20,
         autoplay:true,
         autoplayTimeout:5000, 
-        nav: true,
-        dots: false,
-        stagePadding: 10,
+        dots: true,
+        stagePadding: 21,
         responsive:{
                 0:{
                         items:1
