@@ -45,6 +45,11 @@
                             echo '<li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>
                             <li><a href="./index.php?page=login&dangky">Đăng ký</a></li>';
                         }
+
+                        if(isset($_SESSION['info']) && $_SESSION['info'][8] == 1){ 
+                            $info = $_SESSION['info'];
+                            echo '<li><a href="./index.php?page=admin"s class="text-decoration-none text-white">Setting</a></li>';
+                        }
                     ?>
                 </ul>
             </div>

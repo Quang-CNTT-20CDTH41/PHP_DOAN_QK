@@ -33,35 +33,57 @@
             </div>
             <!-- !SLIDER -->
 
+            <!-- ALL PRODUCT -->
+            <div class="all-product mt-3">
+                <div class="my-3 title-product title-color d-inline-block">
+                    <h4><a href="#" class="text-decoration-none header-color">Tất cả sản phẩm</a></h3>
+                </div>
+                <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
+                    <?php
+                        $sql = 'select count(product_id) as number from products';
+                        $result = executeResult($sql);
+                        $number = 0;
+                        if ($result != null && count($result) > 0) {
+                            $number = $result[0]['number'];
+                        }
+                        $page = ceil($number / 8);
+
+                        $current_page = 1;
+                        if (isset($_GET['page'])) {
+                            $current_page = $_GET['page'];
+                        }
+                        $index = ($current_page - 1) * 8;
+                        
+                        $sqlProduct =  "select * from products limit " . $index . " , 8";
+
+                        $resultProduct = executeResult($sqlProduct);
+                        product($resultProduct);
+                    ?>
+                </div>
+                <div class="row mt-3">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                        for ($i = 1; $i <= $page; $i++) {
+                            echo '<li class="page-item">
+                            <a href="?page=' . $i . '" class="page-link">' . $i . '</a>
+                        </li>';
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            <!-- !ALL PRODUCT -->
+
             <!-- FASH SALE -->
             <div class="flash-sale mt-3 ">
                 <h2 class="text-danger font-anton">F<i class="bi bi-lightning-fill"></i>ASH SALE ONLINE</h2>
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme  p-3">
-                        <div class="item">
-                            <div class="product">
-                                <a href="#"><img src="./images/product/smart/apple/ipad_gen_7.jpg"></a>
-                                <div class="text-center mt-2">
-                                    <h6>Airpad Gen 7</h6>
-                                    <div class="rating text-warning">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="far fa-star"></i></span>
-                                    </div>
-                                    <div class="price">
-                                        <span class="fw-bold">500.000 VND</span>
-                                    </div>
-                                    <div class="old-price text-danger">
-                                        <del>600.000 VND</del>
-                                    </div>
-                                    <div class="header-color p-1 w-75 m-auto rounded">
-                                        <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            $sqlFlas = 'select * from products where menu_id = 2 and price_sale > 0';
+                            $resultFlas = executeResult($sqlFlas);
+                            singleProduct($resultFlas);
+                        ?>
                     </div>
                 </div>
             </div>
@@ -78,159 +100,20 @@
             </div>
             <!-- !BANNER -->
 
-            <!-- APPLE -->
-            <div class="apple mt-3">
+            <!-- ĐIỆN THOẠI -->
+            <div class="smart-phone mt-3">
                 <div class="my-3 title-product title-color d-inline-block">
-                    <h4 class=""><a href="#" class="text-decoration-none header-color">Điện thoại</a></h3>
+                    <h4><a href="#" class="text-decoration-none header-color">Điện thoại</a></h3>
                 </div>
                 <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
-                    <div class="item bg-white py-4 px-1">
-                        <div class="img py-2">
-                            <a href="#"><img src="./images/product/smart/samsung/samsung-a11.jpg" alt=""></a></a>
-                        </div>
-                        <div class="info  py-1">
-                            <a href="#" class="text-decoration-none text-black fw-bold">Samsung Galaxy A22 - Chính hãng</a>
-                            <div class="price">
-                                <span class="text-danger fw-bold">5,090,000 ₫</span>
-                                <del>5,890,000 ₫</del>
-                            </div>
-                        </div>
-                        <div class="note py-1">
-                            <span>Đây là nội dung của sản phẩm</span>
-                        </div>
-                        <div class="header-color p-1 w-75 m-auto rounded">
-                            <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                        </div>
-                    </div>
+                    <?php
+                        $sqlProduct = 'select * from products where menu_id = 1';
+                        $resultProduct = executeResult($sqlProduct);
+                        product($resultProduct);
+                    ?>
                 </div>
             </div>
-            <!-- !APPLE -->
+            <!-- !ĐIỆN THOẠI -->
 
             <!-- BANNER -->
             <div class="banner mt-3">
@@ -243,41 +126,22 @@
             </div>
             <!-- !BANNER -->
 
-            <!-- APPLE WATCH -->
+            <!-- WATCH -->
             <div class="apple-watch mt-3">
                 <div class="my-3 title-product title-color d-inline-block">
                     <h4><a href="#" class="text-decoration-none header-color">Apple Watch</a></h3>
                 </div>
                 <div class="content bg-white">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item py-3">
-                            <div class="product">
-                                <a href="#"><img src="./images/product/watch/apple/gps-nhom-red.png"></a>
-                                <div class="text-center mt-2">
-                                    <h6>Apple Watch Series 6</h6>
-                                    <div class="rating text-warning">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="far fa-star"></i></span>
-                                    </div>
-                                    <div class="price">
-                                        <span class="fw-bold">500.000 VND</span>
-                                    </div>
-                                    <div class="old-price text-danger">
-                                        <del>600.000 VND</del>
-                                    </div>
-                                    <div class="header-color p-1 w-75 m-auto rounded">
-                                        <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="owl-carousel owl-theme py-2">
+                        <?php
+                            $sqlFlas = 'select * from products where menu_id = 4 and price_sale > 0';
+                            $resultFlas = executeResult($sqlFlas);
+                            singleProduct($resultFlas);
+                        ?>
                     </div>
                 </div>
             </div>
-            <!-- !APPLE WATCH -->
+            <!-- ! WATCH -->
             
             <!-- BANNER -->
             <div class="banner mt-4">
@@ -293,36 +157,17 @@
                     <h4><a href="#" class="text-decoration-none header-color">Laptop</a></h3>
                 </div>
                 <div class="content bg-white">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item py-3">
-                            <div class="product">
-                                <a href="#"><img src="./images/product/laptop/mackbook/macbook-air-13-inch-2020-3.png"></a>
-                                <div class="text-center mt-2">
-                                    <h6>Laptop MacBook Air 13</h6>
-                                    <div class="rating text-warning">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="far fa-star"></i></span>
-                                    </div>
-                                    <div class="price">
-                                        <span class="fw-bold">500.000 VND</span>
-                                    </div>
-                                    <div class="old-price text-danger">
-                                        <del>600.000 VND</del>
-                                    </div>
-                                    <div class="header-color p-1 w-75 m-auto rounded">
-                                        <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="owl-carousel owl-theme py-3">
+                        <?php
+                            $sqlFlas = 'select * from products where menu_id = 3 and price_sale > 0';
+                            $resultFlas = executeResult($sqlFlas);
+                            singleProduct($resultFlas);
+                        ?>
                     </div>
                 </div>
             </div>
             <!-- !LAPTOP -->
-
+           
             <!-- ACCESSORY -->
             <div class="accessory mt-3">
                 <div class="my-3 title-product title-color d-inline-block">
@@ -330,78 +175,19 @@
                 </div>
                 <div class="content bg-white">
                     <ul class="d-flex">
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span><img src="./images/accessory/apple.png" alt=""></span>
-                                <label>Apple</label>
-                            </a>
-                        </li>
+                        <?php
+                            $sqlAccess = 'select * from accessory';
+                            $resultAccess = executeResult($sqlAccess);
+                            foreach($resultAccess as $item){
+                                echo '
+                                <li>
+                                    <a href="'. $item['accessory_url'] .'">
+                                        <span><img src="'. $item['accessory_img'] .'" alt=""></span>
+                                        <label>'. $item['accessory_name'] .'</label>
+                                    </a>
+                                </li>';
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>
