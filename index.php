@@ -6,6 +6,7 @@ require './php/db/database.php';
 require('./php/db/xuly-login.php');
 
 require('./php/include/header.php');
+
 if(isset($_GET['page'])){
     switch($_GET['page']){
         case 'login':
@@ -14,16 +15,16 @@ if(isset($_GET['page'])){
         case 'admin':
             require('./admin/index.php');
             break;
-        case 'product':
-            require('./php/include/showproduct.php');
-            break;
         default:
             require('./php/include/main.php');
     }
-}
-else{
+}else if(isset($_GET['product'])){
+    require('./php/include/product.php');
+}else{
     require('./php/include/main.php');
 }
+
+
 
 require('./php/include/footer.php');
 ?>

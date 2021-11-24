@@ -80,7 +80,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme  p-3">
                         <?php
-                            $sqlFlas = 'select * from products where menu_id = 2 and price_sale > 0';
+                            $sqlFlas = 'select * from products where category_id = 2 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
                     <?php
-                        $sqlProduct = 'select * from products where menu_id = 1';
+                        $sqlProduct = 'select * from products where category_id = 1';
                         $resultProduct = executeResult($sqlProduct);
                         product($resultProduct);
                     ?>
@@ -134,7 +134,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme py-2">
                         <?php
-                            $sqlFlas = 'select * from products where menu_id = 4 and price_sale > 0';
+                            $sqlFlas = 'select * from products where category_id = 4 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>
@@ -159,7 +159,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme py-3">
                         <?php
-                            $sqlFlas = 'select * from products where menu_id = 3 and price_sale > 0';
+                            $sqlFlas = 'select * from products where category_id = 3 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>

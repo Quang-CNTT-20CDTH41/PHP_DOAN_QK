@@ -48,7 +48,7 @@
 
                         if(isset($_SESSION['info']) && $_SESSION['info'][8] == 1){ 
                             $info = $_SESSION['info'];
-                            echo '<li><a href="./index.php?page=admin"s class="text-decoration-none text-white">Setting</a></li>';
+                            echo '<li><a href="./index.php?page=admin" class="text-decoration-none text-white">Setting</a></li>';
                         }
                     ?>
                 </ul>
@@ -95,7 +95,7 @@
                         <h3>Trang chủ</h3>
                     </a>
                     <?php 
-                        $query = executeResult('select * from menu');
+                        $query = executeResult('select * from category');
                         recursiveMenu($query, 0, $newMenu, true);
                         echo str_replace('<ul></ul>','',$newMenu);
                     ?>
