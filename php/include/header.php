@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,17 +37,16 @@
                     <li><a href="#">Tuyển dụng</a></li>
                     <li><a href="#">Tra cứu đơn hàng</a></li>
                     <?php
-                        if(isset($_SESSION['userLogin'])){
-                            echo '<li><a href="./index.php?page=login&account">Tài khoản: '. $_SESSION['info'][0] .'</a></li>
+                        if(isset($_SESSION['info'])){
+                            echo '<li><a href="./index.php?page=login&action=account&profile">Tài khoản: '. $_SESSION['info'][0] .'</a></li>
                             <li><a href="./index.php?page=login&dangxuat">Đăng xuất</a></li>';
+                            if($_SESSION['info'][8] == 1){ 
+                                $info = $_SESSION['info'];
+                                echo '<li><a href="./index.php?page=admin" class="text-decoration-none text-white">Setting</a></li>';
+                            }
                         }else{
-                            echo '<li><a href="./index.php?page=login&dangnhap">Đăng nhập</a></li>
-                            <li><a href="./index.php?page=login&dangky">Đăng ký</a></li>';
-                        }
-
-                        if(isset($_SESSION['info']) && $_SESSION['info'][8] == 1){ 
-                            $info = $_SESSION['info'];
-                            echo '<li><a href="./index.php?page=admin" class="text-decoration-none text-white">Setting</a></li>';
+                            echo '<li><a href="./index.php?page=login&action=dangnhap">Đăng nhập</a></li>
+                            <li><a href="./index.php?page=login&action=dangky">Đăng ký</a></li>';
                         }
                     ?>
                 </ul>
@@ -64,7 +62,8 @@
                 </div>
                 <div class="search-box w-50">
                     <form action="" method="get">
-                        <input type="search" class="w-100 p-2" placeholder="Tìm kiếm sản phẩm">
+                        <?php  $search = (isset($_GET['search'])) ?  $_GET['search'] : ''?>
+                        <input type="search" class="w-100 p-2" placeholder="Tìm kiếm sản phẩm" name="search" value="<?= $search ?>">
                         <button type="submit" class="position-absolute"><i class="bi bi-search"></i></button>
                     </form>
                 </div>
@@ -95,7 +94,7 @@
                         <h3>Trang chủ</h3>
                     </a>
                     <?php 
-                        $query = executeResult('select * from category');
+                        $query = executeResult('select * from menu');
                         recursiveMenu($query, 0, $newMenu, true);
                         echo str_replace('<ul></ul>','',$newMenu);
                     ?>

@@ -15,16 +15,20 @@ if(isset($_GET['page'])){
         case 'admin':
             require('./admin/index.php');
             break;
+        case 'prd':
+            require('./php/include/product.php');
+            break;
+        case 'product':
+            require('./php/include/infoProduct.php');
+            break;
         default:
             require('./php/include/main.php');
     }
-}else if(isset($_GET['product'])){
-    require('./php/include/product.php');
+}else if(isset($_GET['search'])){
+    require('./php/include/search.php');
 }else{
     require('./php/include/main.php');
 }
-
-
 
 require('./php/include/footer.php');
 ?>

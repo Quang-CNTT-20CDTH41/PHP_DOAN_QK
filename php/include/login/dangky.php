@@ -95,7 +95,7 @@
         <div class="button d-flex justify-content-center">
             <button type="submit" class="btn btn-primary" name="create">Đăng ký</button>
             <button type="submit" class="btn btn-success mx-2" name="login">
-                    <a href="./index.php?page=login&dangnhap" class="text-decoration-none text-white">Đăng nhập</a>
+                    <a href="./index.php?page=login&action=dangnhap" class="text-decoration-none text-white">Đăng nhập</a>
             </button>
         </div>
         <div class="forgotpass">

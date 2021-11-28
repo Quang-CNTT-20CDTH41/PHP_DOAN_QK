@@ -42,7 +42,7 @@
                     <?php
                         $sql = 'select count(product_id) as number from products';
                         $result = executeResult($sql);
-                        $number = 0;
+
                         if ($result != null && count($result) > 0) {
                             $number = $result[0]['number'];
                         }
@@ -55,7 +55,6 @@
                         $index = ($current_page - 1) * 8;
                         
                         $sqlProduct =  "select * from products limit " . $index . " , 8";
-
                         $resultProduct = executeResult($sqlProduct);
                         product($resultProduct);
                     ?>
@@ -63,9 +62,15 @@
                 <div class="row mt-3">
                     <ul class="pagination justify-content-center">
                         <?php
+                        if(isset($_GET['page'])) {
+                            $getPage = $_GET['page'];
+                        }else{
+                            $getPage = 1;
+                        }
                         for ($i = 1; $i <= $page; $i++) {
+                            $active = ($i == $getPage) ? ' header-color text-white' :'';
                             echo '<li class="page-item">
-                            <a href="?page=' . $i . '" class="page-link">' . $i . '</a>
+                            <a href="?page=' . $i . '" class="page-link'.$active.'">' . $i . '</a>
                         </li>';
                         }
                         ?>
@@ -80,7 +85,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme  p-3">
                         <?php
-                            $sqlFlas = 'select * from products where category_id = 2 and price_sale > 0';
+                            $sqlFlas = 'select * from products where menu_id = 2 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>
@@ -107,7 +112,7 @@
                 </div>
                 <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
                     <?php
-                        $sqlProduct = 'select * from products where category_id = 1';
+                        $sqlProduct = 'select * from products where menu_id = 1';
                         $resultProduct = executeResult($sqlProduct);
                         product($resultProduct);
                     ?>
@@ -134,7 +139,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme py-2">
                         <?php
-                            $sqlFlas = 'select * from products where category_id = 4 and price_sale > 0';
+                            $sqlFlas = 'select * from products where menu_id = 4 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>
@@ -159,7 +164,7 @@
                 <div class="content bg-white">
                     <div class="owl-carousel owl-theme py-3">
                         <?php
-                            $sqlFlas = 'select * from products where category_id = 3 and price_sale > 0';
+                            $sqlFlas = 'select * from products where menu_id = 3 and price_sale > 0';
                             $resultFlas = executeResult($sqlFlas);
                             singleProduct($resultFlas);
                         ?>

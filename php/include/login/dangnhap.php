@@ -38,7 +38,7 @@
             <div class="button d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" name="login">Đăng nhập</button>
                 <button type="submit" class="btn btn-success mx-2" name="login">
-                    <a href="./index.php?page=login&dangky" class="text-decoration-none text-white">Đăng ký</a>
+                    <a href="./index.php?page=login&action=dangky" class="text-decoration-none text-white">Đăng ký</a>
                 </button>
             </div>
             <div class="forgotpass">

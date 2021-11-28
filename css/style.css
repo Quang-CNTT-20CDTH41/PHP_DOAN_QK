@@ -263,6 +263,9 @@ ul {
 #main .container .smart-phone .col-content .item .img a img, #main .container .all-product .col-content .item .img a img {
   width: 150px;
 }
+#main .container .smart-phone .col-content .item .note, #main .container .all-product .col-content .item .note {
+  height: 32px;
+}
 #main .container .smart-phone .col-content .item .header-color:hover, #main .container .all-product .col-content .item .header-color:hover {
   background: #009981;
 }

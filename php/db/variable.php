@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
     
         if(isset($_POST['birthday'])){        
-            $birthday =$_POST['birthday'];
+            $birthday = $_POST['birthday'];
         }
         
         if(empty($_POST['phonenumber'])){
