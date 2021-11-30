@@ -196,7 +196,7 @@
                 </div>
                 <form action="" method="get">
                     <div class="input mx-5">
-                        <input type="text" name="" id="" placeholder="Nhập E-mail của bạn">
+                        <input type="email" name="" id="" placeholder="Nhập E-mail của bạn">
                         <button type="submit"><i class="bi bi-send-fill"></i></button>
                     </div>
                 </form>

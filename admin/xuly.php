@@ -26,56 +26,35 @@ if(isset($_GET['delete'])  && $_GET['manage'] == 'product'){
 }
 
 if(isset($_POST['addProduct'])){
-    if(isset($_POST['prdName'])){
+    if(isset($_POST['prdName']) && isset($_POST['price']) && isset($_POST['priceSale']) && isset($_FILES['image']['name']) && isset($_POST['descript'])){
         $prdName = $_POST['prdName'];
-    }
-    if(isset($_POST['price'])){
+
         $price = $_POST['price'];
-    }
-    if(isset($_POST['priceSale'])){
+ 
         $priceSale = $_POST['priceSale'];
-    }
-    if(isset($_FILES['image']['name'])){
+ 
         $image = $_FILES['image']['name'];
         $image_tmp = $_FILES['image']['tmp_name'];
-    }  
-    if(isset($_POST['descript'])){
+
         $descript = $_POST['descript'];
+
+        $sqlParentId = 'select url from menu where menu_id = "'. $_GET['id'] .'"';
+        $resultParentId = executeSingleResult($sqlParentId);
+
+        $sqlMenuid = 'select url from menu where menu_id = "'. $_GET['type'] .'"';
+        $resultMenuid = executeSingleResult($sqlMenuid);
+
+        $dir = 'images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'];
+        
+        mkdir($dir);
+
+        $urlImg = './images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'] .'/'.$image;
+        $sqlAddPrd = 'insert into products (product_name, product_price, price_sale, descript, product_img, menu_id, menu_parent) value ("'. $prdName .'","'. $price .'","'. $priceSale .'","'. $descript .'","'.  $urlImg .'",'. $_GET['type'] .','. $_GET['id'] .')'; 
+
+        execute($sqlAddPrd);
+        move_uploaded_file($image_tmp, $urlImg);
+        echo '<script>alert("Thêm thành công.");</script>';
     }
-
-    $sqlParentId = 'select url from menu where menu_id = "'. $_GET['id'] .'"';
-    $resultParentId = executeSingleResult($sqlParentId);
-
-    $sqlMenuid = 'select url from menu where menu_id = "'. $_GET['type'] .'"';
-    $resultMenuid = executeSingleResult($sqlMenuid);
-
-    // if(!file_exists($dir)){
-    //     // Tạo một thư mục mới
-    //     if(mkdir($dir)){
-    //         echo "Tạo thư mục thành công.";
-    //     } else{
-    //         echo "ERROR: Không thể tạo thư mục.";
-    //     }
-    // } else{
-    //     echo "ERROR: Thư mục đã tồn tại.";
-    // }
-
-    $dir = 'images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'];
-    
-    if(!file_exists($dir)){
-        if(mkdir($dir)){
-            echo "Tạo thư mục thành công.";
-        } else{
-            echo "ERROR: Không thể tạo thư mục.";
-        }
-    }
-
-    $urlImg = './images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'] .'/'.$image;
-    $sqlAddPrd = 'insert into products (product_name, product_price, price_sale, descript, product_img, menu_id, menu_parent) value ("'. $prdName .'","'. $price .'","'. $priceSale .'","'. $descript .'","'.  $urlImg .'",'. $_GET['type'] .','. $_GET['id'] .')'; 
-
-    execute($sqlAddPrd);
-    move_uploaded_file($image_tmp, $urlImg);
-    echo '<script>alert("Thêm thành công.");</script>';
 }
 
 function adminUser($user)
