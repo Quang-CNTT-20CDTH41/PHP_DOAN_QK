@@ -33,52 +33,6 @@
             </div>
             <!-- !SLIDER -->
 
-            <!-- ALL PRODUCT -->
-            <div class="all-product mt-3">
-                <div class="my-3 title-product title-color d-inline-block">
-                    <h4><a href="#" class="text-decoration-none header-color">Tất cả sản phẩm</a></h3>
-                </div>
-                <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
-                    <?php
-                        $sql = 'select count(product_id) as number from products';
-                        $result = executeResult($sql);
-
-                        if ($result != null && count($result) > 0) {
-                            $number = $result[0]['number'];
-                        }
-                        $page = ceil($number / 8);
-
-                        $current_page = 1;
-                        if (isset($_GET['page'])) {
-                            $current_page = $_GET['page'];
-                        }
-                        $index = ($current_page - 1) * 8;
-                        
-                        $sqlProduct =  "select * from products limit " . $index . " , 8";
-                        $resultProduct = executeResult($sqlProduct);
-                        product($resultProduct);
-                    ?>
-                </div>
-                <div class="row mt-3">
-                    <ul class="pagination justify-content-center">
-                        <?php
-                        if(isset($_GET['page'])) {
-                            $getPage = $_GET['page'];
-                        }else{
-                            $getPage = 1;
-                        }
-                        for ($i = 1; $i <= $page; $i++) {
-                            $active = ($i == $getPage) ? ' header-color text-white' :'';
-                            echo '<li class="page-item">
-                            <a href="?page=' . $i . '" class="page-link'.$active.'">' . $i . '</a>
-                        </li>';
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </div>
-            <!-- !ALL PRODUCT -->
-
             <!-- FASH SALE -->
             <div class="flash-sale mt-3 ">
                 <h2 class="text-danger font-anton">F<i class="bi bi-lightning-fill"></i>ASH SALE ONLINE</h2>

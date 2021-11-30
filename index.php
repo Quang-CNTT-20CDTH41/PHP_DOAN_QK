@@ -18,8 +18,11 @@ if(isset($_GET['page'])){
         case 'prd':
             require('./php/include/product.php');
             break;
-        case 'product':
-            require('./php/include/infoProduct.php');
+        case 'show-cart':
+            require('./php/include/cart.php');
+            break;
+        case 'view':
+            require('./php/include/view.php');
             break;
         default:
             require('./php/include/main.php');

@@ -62,7 +62,7 @@
                 </div>
                 <div class="search-box w-50">
                     <form action="" method="get">
-                        <?php  $search = (isset($_GET['search'])) ?  $_GET['search'] : ''?>
+                        <?php  $search = (isset($_GET['search'])) ?  $_GET['search'] : '';?>
                         <input type="search" class="w-100 p-2" placeholder="Tìm kiếm sản phẩm" name="search" value="<?= $search ?>">
                         <button type="submit" class="position-absolute"><i class="bi bi-search"></i></button>
                     </form>
@@ -75,10 +75,16 @@
                         </a>
                     </div>
                     <div class="item cart p-2">
-                        <a href="#" class="text-decoration-none text-white d-flex">
+                        <a href="./index.php?page=show-cart" class="text-decoration-none text-white d-flex">
                             <i class="bi bi-cart-plus-fill font-size-20"></i>
                             <i class="bi bi-caret-left-fill font-size-20 text-warning"></i>
-                            <span id="cart-total" class="bg-warning px-2">0</span>
+                            <?php 
+                                $count = 0;
+                                if(isset($_SESSION['cart'])){
+                                    $count = count($_SESSION['cart']);
+                                }
+                                echo '<span id="cart-total" class="bg-warning px-2">' . $count . '</span>';
+                            ?>
                         </a>
                     </div>
                 </div>

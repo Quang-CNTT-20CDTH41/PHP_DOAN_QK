@@ -65,18 +65,20 @@ function product($sql)
                 <span>' . $item['descript'] . '</span>
             </div>
             <div class="header-color p-1 w-75 m-auto rounded">
-                <a href="./index.php?page=product&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Xem sản phẩm</a>
+                <a href="./index.php?page=view&show='.$item['product_id'].'" class="text-decoration-none  text-white" >Xem sản phẩm</a>
             </div>
         </div>';
     }
 }
+
+// <a href="./index.php?page=product&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Xem sản phẩm</a>
 
 function singleProduct($sql)
 {
     foreach ($sql as $item) {
         echo '<div class="item">
             <div class="product">
-                <a href="#"><img src="' . $item['product_img'] . '" width="150px"></a>
+                <div style="height: 235px;"><a href="#"><img src="' . $item['product_img'] . '"></a></div>
                 <div class="text-center mt-2">
                     <h6>' . $item['product_name'] . '</h6>
                     <div class="rating text-warning">
@@ -93,7 +95,7 @@ function singleProduct($sql)
                         <del>' . number_format($item['price_sale']) . ' VND</del>
                     </div>
                     <div class="header-color p-1 w-75 m-auto rounded">
-                        <a href="#" class="text-decoration-none  text-white" >Xem sản phẩm</a>
+                        <a href="./index.php?page=cart&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Mua Sản Phẩm</a>
                     </div>
                 </div>
             </div>
@@ -101,6 +103,62 @@ function singleProduct($sql)
     }
 }
 
+if(isset($_GET['page']) == 'cart'){
+    if(isset($_GET['id'])){
+        $CartId = $_GET['id'];
+        $sqlCart = 'select * from `products` where product_id = "' . $CartId . '"';
+        $result = executeSingleResult($sqlCart);
+        cart($result);
+    }
+    
+    if(isset($_GET['delete'])){
+        $delete = $_GET['delete'];
+        unset($_SESSION['cart'][$delete-1]);
+    }
 
-// <td><a href="./index.php?page=admin&edit='. $item['product_id'].'"><button class="btn btn-warning">Edit</button></a></td>
-// <td><button class="btn btn-danger">Delete</button></td>
+    if(isset($_GET['clear'])){
+        session_destroy();
+        unset($_SESSION['cart']);
+    }
+
+}
+
+
+function cart($result) {
+    if($result > 0){
+        if (isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+            $i = count($cart);
+
+            $pos = -1;
+
+            for($j = 0; $j < $i; $j++){
+                if($cart[$j][2] == $result['product_name']){
+                    $pos = $j; break;
+                }
+            }
+
+            if($pos != -1){
+                $cart[$pos][4]++;
+            }else{
+                $cart[$i][0] = $i + 1;
+                $cart[$i][1] = $result['product_img'];
+                $cart[$i][2] = $result['product_name'];
+                $price = ($result['price_sale'] != 0) ? $result['price_sale'] : $result['product_price'];
+                $cart[$i][3] = $price ;
+                $cart[$i][4] = 1;
+            }
+        } else {
+            $cart = array(array());
+            $cart[0][0] = 1;
+            $cart[0][1] = $result['product_img'];
+            $cart[0][2] = $result['product_name'];
+            $price = ($result['price_sale'] != 0) ? $result['price_sale'] : $result['product_price'];
+            $cart[0][3] = $price ;
+            $cart[0][4] = 1;
+        }
+        echo '<script>alert("Thêm thành công");</script>';
+        $_SESSION['cart'] = $cart;
+    }
+    
+}

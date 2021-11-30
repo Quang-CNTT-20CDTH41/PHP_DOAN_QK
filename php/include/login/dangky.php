@@ -99,7 +99,7 @@
             </button>
         </div>
         <div class="forgotpass">
-            <a href="#" class="text-decoration-none float-end text-black h6">Điều khoản</a>
+            <a href="#" class="text-decoration-none float-end text-white h6">Điều khoản</a>
         </div>
     </form>
 </div>
