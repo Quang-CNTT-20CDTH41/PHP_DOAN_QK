@@ -1,12 +1,12 @@
 <?php
-function search ($sqlSearch) {
-    $resultSearch = executeResult($sqlSearch);
-    if($resultSearch != null){
-        product($resultSearch);
-    }else{
-        echo 'Không tìm thấy sản phẩm phù hợp';
+    function search ($sqlSearch) {
+        $resultSearch = executeResult($sqlSearch);
+        if($resultSearch != null){
+            product($resultSearch);
+        }else{
+            echo 'Không tìm thấy sản phẩm phù hợp';
+        }
     }
-}
 ?>
 <div id="main">
     <div class="container">

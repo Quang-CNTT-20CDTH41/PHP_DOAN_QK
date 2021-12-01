@@ -103,14 +103,48 @@ function singleProduct($sql)
     }
 }
 
-if(isset($_GET['page']) == 'cart'){
-    if(isset($_GET['id'])){
+if(isset($_GET['page'])){
+    if($_GET['page'] == 'cart' && isset($_GET['id'])){
         $CartId = $_GET['id'];
         $sqlCart = 'select * from `products` where product_id = "' . $CartId . '"';
-        $result = executeSingleResult($sqlCart);
-        cart($result);
-    }
+        $resultCart = executeSingleResult($sqlCart);
+        if($resultCart > 0){
+            if (isset($_SESSION['cart'])) {
+                $cart = $_SESSION['cart'];
+                $i = count($cart);
     
+                $pos = -1;
+    
+                for($j = 0; $j < $i; $j++){
+                    if($cart[$j][2] == $resultCart['product_name']){
+                        $pos = $j; break;
+                    }
+                }
+    
+                if($pos != -1){
+                    $cart[$pos][4]++;
+                }else{
+                    $cart[$i][0] = $i + 1;
+                    $cart[$i][1] = $resultCart['product_img'];
+                    $cart[$i][2] = $resultCart['product_name'];
+                    $price = ($resultCart['price_sale'] != 0) ? $resultCart['price_sale'] : $resultCart['product_price'];
+                    $cart[$i][3] = $price ;
+                    $cart[$i][4] = 1;
+                }
+            } else {
+                $cart = array(array());
+                $cart[0][0] = 1;
+                $cart[0][1] = $resultCart['product_img'];
+                $cart[0][2] = $resultCart['product_name'];
+                $price = ($resultCart['price_sale'] != 0) ? $resultCart['price_sale'] : $resultCart['product_price'];
+                $cart[0][3] = $price ;
+                $cart[0][4] = 1;
+            }
+            echo '<script>alert("Mua sản phẩm thành công");</script>';
+            $_SESSION['cart'] = $cart;
+        }
+    }
+
     if(isset($_GET['delete'])){
         $delete = $_GET['delete'];
         unset($_SESSION['cart'][$delete-1]);
@@ -120,45 +154,4 @@ if(isset($_GET['page']) == 'cart'){
         session_destroy();
         unset($_SESSION['cart']);
     }
-
-}
-
-
-function cart($result) {
-    if($result > 0){
-        if (isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-            $i = count($cart);
-
-            $pos = -1;
-
-            for($j = 0; $j < $i; $j++){
-                if($cart[$j][2] == $result['product_name']){
-                    $pos = $j; break;
-                }
-            }
-
-            if($pos != -1){
-                $cart[$pos][4]++;
-            }else{
-                $cart[$i][0] = $i + 1;
-                $cart[$i][1] = $result['product_img'];
-                $cart[$i][2] = $result['product_name'];
-                $price = ($result['price_sale'] != 0) ? $result['price_sale'] : $result['product_price'];
-                $cart[$i][3] = $price ;
-                $cart[$i][4] = 1;
-            }
-        } else {
-            $cart = array(array());
-            $cart[0][0] = 1;
-            $cart[0][1] = $result['product_img'];
-            $cart[0][2] = $result['product_name'];
-            $price = ($result['price_sale'] != 0) ? $result['price_sale'] : $result['product_price'];
-            $cart[0][3] = $price ;
-            $cart[0][4] = 1;
-        }
-        echo '<script>alert("Thêm thành công");</script>';
-        $_SESSION['cart'] = $cart;
-    }
-    
 }

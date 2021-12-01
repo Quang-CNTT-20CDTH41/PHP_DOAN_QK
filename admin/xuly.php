@@ -46,14 +46,29 @@ if(isset($_POST['addProduct'])){
 
         $dir = 'images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'];
         
-        mkdir($dir);
+        if(!file_exists($dir)){
+            mkdir($dir);
+        }
 
         $urlImg = './images/product/'. $resultMenuid['url'] .'/'. $resultParentId['url'] .'/'.$image;
         $sqlAddPrd = 'insert into products (product_name, product_price, price_sale, descript, product_img, menu_id, menu_parent) value ("'. $prdName .'","'. $price .'","'. $priceSale .'","'. $descript .'","'.  $urlImg .'",'. $_GET['type'] .','. $_GET['id'] .')'; 
 
-        execute($sqlAddPrd);
+        $resultAdd = execute($sqlAddPrd);
         move_uploaded_file($image_tmp, $urlImg);
-        echo '<script>alert("Thêm thành công.");</script>';
+
+        if(isset($_POST['display']) && isset($_POST['cameratruoc']) && isset($_POST['camerasau']) && isset($_POST['ram']) && isset($_POST['chip']) && isset($_POST['pin'])){
+            $display = $_POST['display'];
+            $cameratruoc = $_POST['cameratruoc'];
+            $camerasau = $_POST['camerasau'];
+            $chip = $_POST['chip'];
+            $ram = $_POST['ram'];
+            $pin = $_POST['pin'];
+            $sqlShowInfo = 'select product_id from products where product_name = "' . $prdName . '"';
+            $resultShowInfo = executeSingleResult($sqlShowInfo);
+            $sqlInfo = 'insert into info (display, camerasau, cameratruoc, chip, ram, pin, product_id) value("'. $display .'","'. $camerasau .'","'. $cameratruoc .'","'. $chip .'","'. $ram .'","'. $pin .'","'. $resultShowInfo['product_id'] .'")';
+            execute($sqlInfo);
+            echo '<script>alert("Thêm thành công!.");</script>';
+        }
     }
 }
 
@@ -61,6 +76,7 @@ function adminUser($user)
 {
     $id = 1;
     foreach ($user as $item) {
+        $chucvu = ($item['level'] == 1) ? 'Quản lý' : 'Khách hàng';
         echo '<tr>
             <td>' . $id++ . '</td>
             <td>' . $item['hoten'] . '</td>
@@ -70,7 +86,8 @@ function adminUser($user)
             <td>' . $item['address'] . '</td>
             <td>' . $item['email'] . '</td>
             <td>' . $item['phone'] . '</td>
-            <td>' . $item['level'] . '</td>
+            <td>' . $chucvu . '</td>
+            <td><a href="./index.php?page=admin&manage=member&edit=' . $item['user_id'] . '"><button class="btn btn-warning editAccount" id="">Sửa</button></a></td>
             <td><a href="./index.php?page=admin&manage=member&delete=' . $item['user_id'] . '"><button class="btn btn-danger">Xoá</button></a></td>
         </tr>';
     }
@@ -80,6 +97,16 @@ if(isset($_GET['delete']) && $_GET['manage'] == 'member'){
     $id = $_GET['delete'];
     $sqlDelete = 'delete from user where user_id = "'. $id .'"';
     execute($sqlDelete);
+}
+
+if(isset($_POST['changelevel'])){
+    if(isset($_GET['edit']) && isset($_POST['level']) ){
+        $userId = $_GET['edit'];
+        $level = $_POST['level'];
+        echo '<script>alert("Sửa sản phẩm thành công!");</script>';
+        $sqlLevel = 'update user set level = "' . $level . '" where user_id = "' . $userId . '"';
+        execute($sqlLevel);
+    }
 }
 
 if(isset($_POST['editProduct'])){
@@ -110,6 +137,7 @@ if(isset($_POST['editProduct'])){
         $sqlEditPrd = 'update products set product_name = "' . $prdName . '", product_price = "' . $price . '", descript = "' . $descript . '" where product_id = ' . $id;
         
         execute($sqlEditPrd);
+        echo '<script>alert("Sửa sản phẩm thành công!");</script>';
     }
 }
 
@@ -148,6 +176,21 @@ if(isset($_POST['addMenu'])){
             value('". $menuName ."' , '". $selectMenu ."', '". $result['url'] . '-' . $menuUrl  ."')";
         }
         execute($sqlMenu);
+        echo '<script>alert("Thêm menu thành công!");</script>';
+    }
+}
+
+if(isset($_POST['editMenu'])){
+    if(isset($_POST['menuName']) && isset($_POST['menuUrl']) && isset($_POST['selectMenu']) && isset($_POST['menuIcon'])){
+        $menuName = $_POST['menuName'];
+        $menuUrl = $_POST['menuUrl'];
+        $menuIcon = $_POST['menuIcon'];
+        $selectMenu = $_POST['selectMenu'];
+
+        $sqlEditMenu = "update menu set menu_name = '" . $menuName . "', url = '" . $menuUrl . "', icon_menu = '" . $menuIcon . "' where menu_id = '" . $selectMenu . "'";
+
+        execute($sqlEditMenu);
+        echo '<script>alert("Sửa menu thành công!");</script>';
     }
 }
 
@@ -156,4 +199,5 @@ if(isset($_POST['deleteMenu']) && isset($_POST['selectMenu'])){
     $selectMenu = $_POST['selectMenu'];
     $sqlDelete = 'delete from menu where menu_id = "' . $selectMenu . '"';
     execute($sqlDelete);
+    echo '<script>alert("Xoá menu thành công!");</script>';
 }

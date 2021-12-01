@@ -87,6 +87,42 @@
                     <input type="file" class="form-control" id="image"  placeholder="Nhập mô tả" name="image">
                 </div>
             </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Màn hình</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Nhập mô tả" name="display" required>
+                </div>
+            </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Camera Trước</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Camera trước" name="cameratruoc" required>
+                </div>
+            </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Camera Sau</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Camera sau" name="camerasau" required>
+                </div>
+            </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Chip</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Chip" name="chip" required>
+                </div>
+            </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Ram</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="RAM" name="ram" required>
+                </div>
+            </div>
+            <div class="row py-2">
+                <label for="" class="col-form-label col-sm-2">Pin</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="PIN" name="pin" required>
+                </div>
+            </div>
             <button class="btn btn-success mb-2" name="addProduct">Thêm</button>
         </form>
     </div>

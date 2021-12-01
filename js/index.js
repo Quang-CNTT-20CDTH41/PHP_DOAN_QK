@@ -39,4 +39,4 @@ $(document).ready(function(){
         }, function(){
             $(this).find("ul:first").hide();
         });
-    });
+});

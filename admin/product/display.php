@@ -1,5 +1,3 @@
-<?php 
-?>
 <div class="header-color py-2">
     <a href="./index.php?page=admin&manage=addProdcut"><button class="btn btn-success">Thêm Sản Phẩm</button></a>
 </div>
