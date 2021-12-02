@@ -3,6 +3,7 @@
         <div class="text-center">
             <h2>Giỏ hàng</h2>
         </div>
+        <a href="./index.php?page=show" class="btn btn-warning mx-2">Tiếp tục xem sản phẩm</a>
         <hr class="bg-white">
         <form action="" method="get">
         <table class="table table-hover table-bordered text-white title-color rounded">

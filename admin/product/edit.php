@@ -3,9 +3,7 @@
         $idEdit = $_GET['id'];
         $sqlProdcutEdit = 'select * from products inner join info where products.product_id = info.product_id and products.product_id = '. $idEdit;
         $resultPrdEdit = executeResult($sqlProdcutEdit);
-
     }
-
 ?>
 
 <div class="header-color text-white">
