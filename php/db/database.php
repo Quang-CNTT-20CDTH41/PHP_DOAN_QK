@@ -36,7 +36,7 @@ function recursiveMenu($sourceArr, $parent = 0, &$newMenu, $sub = true)
         foreach ($sourceArr as $key => $value) {
             if ($value['parent'] == $parent) {
                 $product = ($parent == 0) ? $value['url']  :   $value['url'] . '&parent';
-                $newMenu .= '<li class="nav-item"><a href="index.php?page=prd&product=' . $product . '" class="nav-link">' . $value['icon_menu'] . '<span>' . $value['menu_name'] . '</span></a>';
+                $newMenu .= '<li class="nav-item"><a href="index.php?page=product&product=' . $product . '" class="nav-link">' . $value['icon_menu'] . '<span>' . $value['menu_name'] . '</span></a>';
                 $newParent = $value['menu_id'];
                 unset($sourceArr[$key]);
                 recursiveMenu($sourceArr, $newParent, $newMenu, $sub = false);

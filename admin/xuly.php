@@ -23,6 +23,9 @@ if(isset($_GET['delete'])  && $_GET['manage'] == 'product'){
     $deletePrd = $_GET['delete'];
     $sqlDelete = 'delete from products where product_id = ' . $deletePrd;
     execute($sqlDelete);
+
+    $sqlDeleteInfo = 'delete from info where product_id = ' . $deletePrd;
+    execute($sqlDeleteInfo);
 }
 
 if(isset($_POST['addProduct'])){
@@ -65,7 +68,7 @@ if(isset($_POST['addProduct'])){
             $pin = $_POST['pin'];
             $sqlShowInfo = 'select product_id from products where product_name = "' . $prdName . '"';
             $resultShowInfo = executeSingleResult($sqlShowInfo);
-            $sqlInfo = 'insert into info (display, camerasau, cameratruoc, chip, ram, pin, product_id) value("'. $display .'","'. $camerasau .'","'. $cameratruoc .'","'. $chip .'","'. $ram .'","'. $pin .'","'. $resultShowInfo['product_id'] .'")';
+            $sqlInfo = "insert into info (display, camerasau, cameratruoc, chip, ram, pin, product_id) value('". $display ."','". $camerasau ."','". $cameratruoc ."','". $chip ."','". $ram ."','". $pin ."','". $resultShowInfo["product_id"] ."')";
             execute($sqlInfo);
             echo '<script>alert("Thêm thành công!.");</script>';
         }
@@ -113,34 +116,28 @@ if(isset($_POST['editProduct'])){
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         
-        if(isset($_POST['prdName'])){
+        if(isset($_POST['prdName']) && isset($_POST['price']) && isset($_POST['priceSale']) && isset($_POST['descript'])){
             $prdName = $_POST['prdName'];
-        }
-        
-        if(isset($_POST['price'])){
-            $price = $_POST['price'];
-        }
-
-        if(isset($_POST['priceSale'])){
             $priceSale = $_POST['priceSale'];
-        }
-
-        if(isset($_FILES['image']['name'])){
-            $image = $_FILES['image']['name'];
-            $image_tmp = $_FILES['image']['tmp_name'];
-        }  
-
-        if(isset($_POST['descript'])){
+            $price = $_POST['price'];
             $descript = $_POST['descript'];
-        }
 
-        $sqlEditPrd = 'update products set product_name = "' . $prdName . '", product_price = "' . $price . '", descript = "' . $descript . '" where product_id = ' . $id;
-        
-        execute($sqlEditPrd);
-        echo '<script>alert("Sửa sản phẩm thành công!");</script>';
+            if(isset($_POST['display']) && isset($_POST['cameratruoc']) && isset($_POST['camerasau']) && isset($_POST['ram']) && isset($_POST['chip']) && isset($_POST['pin'])){
+                $display = $_POST['display'];
+                $cameratruoc = $_POST['cameratruoc'];
+                $camerasau = $_POST['camerasau'];
+                $chip = $_POST['chip'];
+                $ram = $_POST['ram'];
+                $pin = $_POST['pin'];
+                $sqlEditPrd = 'update products set product_name = "' . $prdName . '", product_price = "' . $price . '", descript = "' . $descript . '" where product_id = ' . $id;
+                execute($sqlEditPrd);
+                $sqlEditInfo = "update info set display = '" . $display . "', cameratruoc = '" . $cameratruoc . "', camerasau = '" . $camerasau . "' , chip = '". $chip ."' , ram = '". $ram ."' , pin = '". $pin ."' where product_id = " . $id;
+                execute($sqlEditInfo);
+                echo '<script>alert("Sửa sản phẩm thành công!");</script>';
+            }
+        }
     }
 }
-
 
 function editMenu($sourceArr,  $parent = 0, &$newMenu, $text = "--") {
     if (count($sourceArr) > 0) {

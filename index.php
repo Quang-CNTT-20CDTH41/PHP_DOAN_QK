@@ -15,7 +15,7 @@ if(isset($_GET['page'])){
         case 'admin':
             require('./admin/index.php');
             break;
-        case 'prd':
+        case 'product':
             require('./php/include/product.php');
             break;
         case 'show-cart':

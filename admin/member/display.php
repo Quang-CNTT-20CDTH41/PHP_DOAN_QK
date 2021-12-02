@@ -41,7 +41,7 @@
     <hr class="text-white">
     <form action="" method="post" class="d-flex justify-content-center">
         <div class="row">
-            <h5 class="text-white"><?php echo $resulgEditAcc['hoten']; ?></h5>
+            <h5 class="text-white">Account: <?php echo $resulgEditAcc['hoten']; ?></h5>
             <label for="" class="col-form-label col-sm-3 text-white">Cấp bậc:</label>
             <div class="col-sm-8">
                 <select name="level" class="form-select">

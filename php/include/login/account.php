@@ -8,10 +8,10 @@
     <h4 class="text-center">Thông tin khách hàng</h4>
     <ul class="nav nav-pills mb-3">
         <li class="nav-item">
-            <a class="nav-link <?php if(isset($_GET['profile'])){echo 'active"';};?>" href="index.php?page=login&action=account&profile">Tài khoản</a>
+            <a class="nav-link text-color <?php if(isset($_GET['profile'])){echo 'active"';};?>" href="index.php?page=login&action=account&profile">Tài khoản</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if(isset($_GET['change'])){echo 'active"';};?>"  href="index.php?page=login&action=account&change">Thay đổi thông tin</a>
+            <a class="nav-link text-color <?php if(isset($_GET['change'])){echo 'active"';};?>"  href="index.php?page=login&action=account&change">Thay đổi thông tin</a>
         </li>
     </ul>
     <div class="tab-content">
