@@ -150,8 +150,21 @@ if(isset($_GET['page'])){
         unset($_SESSION['cart'][$delete-1]);
     }
 
+    if(isset($_POST['update'])){
+        $update = $_POST['idUpdate'];
+        $number =  $_POST['quantity'];
+        for($i = 0; $i < count($_SESSION['cart']); $i++){
+            if($_SESSION['cart'][$i][0] == $update){
+                $_SESSION['cart'][$i][4] = $number;
+            }
+        }
+    }
+
     if(isset($_GET['clear'])){
         session_destroy();
         unset($_SESSION['cart']);
     }
+    
+    // session_destroy();
+    // unset($_SESSION['cart']);
 }

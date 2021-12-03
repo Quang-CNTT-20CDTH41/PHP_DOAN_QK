@@ -72,12 +72,11 @@
                 <div class="order-tools d-flex">
                     <div class="item check-order header-color">
                         <a href="./index.php?page=show" class="font-size-12 d-block">
-                            <!-- <span class="icon"><i class="bi bi-truck font-size-20"></i></span> -->
                             <span class="text">Xem sản phẩm</span>
                         </a>
                     </div>
                     <div class="item cart p-2">
-                        <a href="./index.php?page=cart" class="text-decoration-none text-white d-flex">
+                        <a href="./index.php?page=show-cart" class="text-decoration-none text-white d-flex">
                             <i class="bi bi-cart-plus-fill font-size-20"></i>
                             <i class="bi bi-caret-left-fill font-size-20 text-warning"></i>
                             <?php 

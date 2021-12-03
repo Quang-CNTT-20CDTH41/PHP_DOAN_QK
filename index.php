@@ -21,7 +21,7 @@ if(isset($_GET['page'])){
         case 'view':
             require('./php/include/view.php');
             break;
-        case 'cart':
+        case 'show-cart':
             require('./php/include/cart.php');
             break;
         case 'show':
