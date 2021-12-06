@@ -72,7 +72,7 @@
                                             </div> 
                                             <div class="col-md-12">
                                             <a  href="./index.php?page=cart&id=<?php echo $result['product_id']?>" 
-                                            class="btn text-white add-to-cart" style="background-color: #00483d;margin-top:5px">Mua Sản Phẩm
+                                            class="btn text-white add-to-cart" style="background-color: #00483d;margin-top:5px">Thêm vào giỏ hàng
                                                 </a>
                                         </div>
                                     </div>

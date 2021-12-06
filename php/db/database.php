@@ -94,7 +94,7 @@ function singleProduct($sql)
                         <del>' . number_format($item['price_sale']) . ' VND</del>
                     </div>
                     <div class="header-color p-1 w-75 m-auto rounded">
-                        <a href="./index.php?page=cart&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Mua Sản Phẩm</a>
+                        <a href="./index.php?page=cart&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Thêm vào giỏ</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@ if(isset($_GET['page'])){
                 $cart[0][4] = 1;
                 $cart[0][5] =  $resultCart['product_id'];
             }
-            echo '<script>alert("Mua sản phẩm thành công");</script>';
+            echo '<script>alert("Đã thêm vào giỏ hàng");</script>';
             $_SESSION['cart'] = $cart;
         }
     }
