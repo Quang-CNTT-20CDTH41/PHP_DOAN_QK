@@ -198,3 +198,11 @@ if(isset($_POST['deleteMenu']) && isset($_POST['selectMenu'])){
     execute($sqlDelete);
     echo '<script>alert("Xoá menu thành công!");</script>';
 }
+
+if(isset($_POST['delivery'])){
+    if(isset($_POST['account'])){
+        $account = $_POST['account'];
+        $sqlDeleteBuy = 'delete from buying where `account_id` = "'. $account . '"'; 
+        execute($sqlDeleteBuy);
+    }
+}

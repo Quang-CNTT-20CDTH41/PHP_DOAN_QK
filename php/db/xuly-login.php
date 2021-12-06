@@ -41,6 +41,7 @@ if (isset($_POST['login'])) {
                     $info[6] = $resultLogin['email'];
                     $info[7] = $resultLogin['phone'];
                     $info[8] = $resultLogin['level'];
+                    $info[9] = $resultLogin['user_id'];
                     $_SESSION['info'] = $info;
                 }
                 header('Location: index.php');
@@ -51,7 +52,7 @@ if (isset($_POST['login'])) {
 
 // Xoá session khi đăng xuất 
 if (isset($_GET['dangxuat'])) {
-    session_destroy();
+    unset($_SESSION['info']);
     header('Location: index.php');
     die();
 }
@@ -108,15 +109,17 @@ if(isset($_POST['changeAccount'])){
                 $info[0] = $fullname;
                 $info[1] = $gender;
                 $info[2] = $resultCheck['user_name'];
-                $info[3] = $resultCheck['user_name'];
+                $info[3] = $resultCheck['password'];
                 $info[4] = $birthday;
                 $info[5] = $address;
                 $info[6] = $resultCheck['email'];
                 $info[7] = $phonenumber;
                 $info[8] = 0;
+                $info[9] = $resultCheck['user_id'];
                 $_SESSION['info'] = $info;
                 execute($sqlChange);
                 echo '<script>alert("Đổi thông tin thành công");</script>';
         }
     }
 }
+

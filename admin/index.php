@@ -23,6 +23,7 @@ require_once('xuly.php');
                         <a href="./index.php?page=admin&manage=product" class="btn btn-success">Sản phẩm</a>
                         <a href="./index.php?page=admin&manage=member" class="btn btn-success">Thành viên</a>
                         <a href="./index.php?page=admin&manage=menu" class="btn btn-success">Thanh Menu</a>
+                        <a href="./index.php?page=admin&manage=cart" class="btn btn-success">Giao hàng</a>
                     </div>
                 </div>
             </form> 
@@ -44,6 +45,9 @@ require_once('xuly.php');
                     break;
                 case 'member':
                     require('./admin/member/display.php');
+                    break;
+                case 'cart':
+                    require('./admin/cart/index.php');
                     break;
                 default:
                     require('./admin/product/display.php');

@@ -29,6 +29,7 @@ function executeSingleResult($sql)
 }
 
 // MENU
+
 function recursiveMenu($sourceArr, $parent = 0, &$newMenu, $sub = true)
 {
     if (count($sourceArr) > 0) {
@@ -71,8 +72,6 @@ function product($sql)
     }
 }
 
-// <a href="./index.php?page=product&id='.$item['product_id'].'" class="text-decoration-none  text-white" >Xem sản phẩm</a>
-
 function singleProduct($sql)
 {
     foreach ($sql as $item) {
@@ -103,6 +102,8 @@ function singleProduct($sql)
     }
 }
 
+// CART
+
 if(isset($_GET['page'])){
     if($_GET['page'] == 'cart' && isset($_GET['id'])){
         $CartId = $_GET['id'];
@@ -130,6 +131,7 @@ if(isset($_GET['page'])){
                     $price = ($resultCart['price_sale'] != 0) ? $resultCart['price_sale'] : $resultCart['product_price'];
                     $cart[$i][3] = $price ;
                     $cart[$i][4] = 1;
+                    $cart[$i][5] = $resultCart['product_id'];
                 }
             } else {
                 $cart = array(array());
@@ -139,6 +141,7 @@ if(isset($_GET['page'])){
                 $price = ($resultCart['price_sale'] != 0) ? $resultCart['price_sale'] : $resultCart['product_price'];
                 $cart[0][3] = $price ;
                 $cart[0][4] = 1;
+                $cart[0][5] =  $resultCart['product_id'];
             }
             echo '<script>alert("Mua sản phẩm thành công");</script>';
             $_SESSION['cart'] = $cart;
@@ -161,10 +164,95 @@ if(isset($_GET['page'])){
     }
 
     if(isset($_GET['clear'])){
-        session_destroy();
         unset($_SESSION['cart']);
     }
-    
-    // session_destroy();
-    // unset($_SESSION['cart']);
+}
+
+// BUYING
+
+if(isset($_GET['buying'])){
+    if(isset($_SESSION['cart']) && isset($_SESSION['info'])){
+        $account_id = $_SESSION['info'][9];
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("Y-m-d H:i:s");
+        for($i = 0; $i < count($_SESSION['cart']); $i++){
+            $sqlBuying = 'insert into buying(account_id,  product_id, quantity, time) value("'. (int) $account_id .'", "'. (int) $_SESSION['cart'][$i][5] .'", "'. (int) $_SESSION['cart'][$i][4] .'", "'. $date .'")';
+            execute($sqlBuying);
+        }
+        unset($_SESSION['cart']);
+        echo '<script>alert("Cám ơn bạn đã mua hàng.");</script>';
+    }
+}
+
+// COMMENT
+
+if(isset($_POST['comment'])){
+    if(isset($_POST['star']) && isset($_POST['textarea']) && isset($_SESSION['info'])){
+        $star = $_POST['star'];
+        $textarea = $_POST['textarea'];
+        $product_id = $_GET['product_id'];
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("Y-m-d H:i:s");
+        $sqlReview = 'insert into reviews(review_name, time, comment, star, product_id) value("'. $_SESSION['info'][0] .'", "'. $date .'", "'. $textarea .'", "'. $star .'", "'. $product_id .'")';
+        execute($sqlReview);
+        echo '<script>alert("Bình luận thành công!.");</script>';
+    }
+}
+
+if(isset($_POST['reply'])){
+    if(isset($_POST['textReply']) && isset($_POST['reply_id'])){
+        $textReply = $_POST['textReply'];
+        $reply_id = $_POST['reply_id'];
+        $product_id = $_GET['product_id'];
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("Y-m-d H:i:s");
+        $sqlReply = 'insert into reviews(review_name, time, comment, reply_id, product_id) value("'. $_SESSION['info'][0] .'", "'. $date .'", "'. $textReply .'", "'. $reply_id .'", "'. $product_id .'")';
+        execute($sqlReply);
+    }
+}
+
+function review($sql) {
+    $reviewText = '';
+    foreach($sql as $item){
+        $reviewText .= '<div class="row mt-3">
+                <div class="mx-4 d-flex">
+                    <img src="./images/account/avt.png" alt="" width="5%" class="avt rounded-circle">
+                    <h5 class="mx-2">'. $item["review_name"] .'</h5>';
+                    while($item["star"] > 0){
+                        $reviewText .=  '<span><i class="bi bi-star-fill yellow mt-1"></i></span>';
+                        $item["star"]--;
+                    }
+
+                    $reviewText .= '<span class="position-absolute m-4 mx-5 px-3">'. $item["time"] .'</span>
+                </div>
+                <div class="mx-5 px-5"><span class="header-text fw-bold">'. $item["comment"] .'</span></div>
+                <div class="mx-5 px-5 row">
+                    <label class="px-5 fw-bold" id="reply">Trả lời
+                        <form action="" method="post">
+                            <input type="checkbox" id="checkbox" class="d-none">
+                            <div class="textComment">
+                                    <input type="text" class="form-control mt-3" placeholder="Trả lời bình luận" name="textReply">
+                                    <input type="hidden" name="reply_id" value="'. $item["reviews_id"] .'">
+                                    <button class="btn title-color mt-3 text-white float-end" name="reply">Trả lời</button>
+                            </div>
+                        </form>
+                    </label>
+                    <div class="row mt-3">';
+                   
+                    $sqlReply = 'select * from reviews where reply_id = '. $item["reviews_id"];
+                    $resultReply = executeResult($sqlReply);
+                    foreach($resultReply as $item){
+                        $reviewText .= ' <div class="mx-4 d-flex mt-3">
+                        <img src="./images/account/avt.png" alt="" width="5%" class="avt rounded-circle">
+                        <h5 class="mx-2">'. $item["review_name"] .'</h5>
+                        <span class="position-absolute m-4 mx-5 px-3">'. $item["time"] .'</span>
+                            </div>
+                    <div class="mx-5 px-5"><span class="header-text fw-bold">'. $item["comment"] .'</span></div>';
+                    }
+                $reviewText .= ' 
+            </div>
+        </div>
+    </div>';
+    }
+    echo $reviewText ;
 }

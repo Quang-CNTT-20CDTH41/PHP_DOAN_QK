@@ -1,6 +1,6 @@
 <?php
     if(isset($_GET['product_id'] ) &&  isset($_GET['page']) == 'view'){
-    $id = $_GET['product_id'] ;
+        $id = $_GET['product_id'] ;
     }
     $sql = "select * from products where `product_id` = ".$id;
     $sql1 = "select * from info where `product_id` = ".$id;
@@ -74,7 +74,6 @@
                                             <a  href="./index.php?page=cart&id=<?php echo $result['product_id']?>" 
                                             class="btn text-white add-to-cart" style="background-color: #00483d;margin-top:5px">Mua Sản Phẩm
                                                 </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -82,11 +81,60 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-        <!-- !ALL PRODUCT -->
+    </div>
+    <!-- !ALL PRODUCT -->
+
+    <!-- COMMENT -->
+    <div class="border border-success rounded mt-3">
+        <form action="" method="post">
+            <div class="p-4 mt-1 my-5">
+                <h4 class="header-text">Bình luận về <?php echo $result['product_name'] ?> - Chính hãng</h4>
+                <div class="d-flex">
+                    <div class="row">
+                        <label for="start1" class="col-form-label font-size-20" id='label1'><i id="i1" class="bi bi-star"></i></label>
+                        <input type="radio" class="d-none" value="1" name="star" id="start1">
+                    </div>
+                    <div class="row mx-1">
+                        <label for="start2" class="col-form-label font-size-20"><i  id="i2" class="bi bi-star"></i></label>
+                        <input type="radio" class="d-none" value="2" name="star" id="start2">
+                    </div>
+                    <div class="row">
+                        <label for="start3" class="col-form-label font-size-20"><i  id="i3" class="bi bi-star"></i></label>
+                        <input type="radio" class="d-none" value="3" name="star" id="start3">
+                    </div>
+                    <div class="row mx-1">
+                        <label for="start4" class="col-form-label font-size-20"><i  id="i4" class="bi bi-star"></i></label>
+                        <input type="radio" class="d-none" value="4" name="star" id="start4">
+                    </div>
+                    <div class="row">
+                        <label for="start5" class="col-form-label font-size-20"><i  id="i5" class="bi bi-star"></i></label>
+                        <input type="radio" class="d-none" value="5" name="star" id="start5">
+                    </div>
+                    <div class="row mx-2 pt-2">
+                        <div class="header-text">Bạn đánh giá: <span id="text"></span></div>
+                    </div>
+                </div>
+                <div class="row mt-1 px-2">
+                    <textarea name="textarea" id="" cols="30" rows="10" class="form-control" placeholder="Nội dung tối thiểu 15 ký tự."></textarea>
+                </div>
+                <div class="row float-end my-3">
+                    <button class="btn header-color text-white " name="comment"><i class="bi bi-send px-2"></i>Bình luận</button>
+                </div>
+                
+            </div>
+        </form>
+        <div class="m-5" id="reviews">
+            <h3 class="mb-3">Những đánh giá</h3>
+            <?php
+                $sqlShowView = 'select * from reviews where product_id = ' . $_GET['product_id']  . ' and reply_id = 0';
+                $resultShowView = executeResult($sqlShowView);
+                review($resultShowView);
+            ?>
+        </div>
+    </div>
+    <!-- !COMMENT -->
 
     <!-- WATCH -->
     <div class="apple-watch mt-3">
@@ -109,3 +157,4 @@
     
 
 </section>
+<script src="./js/star.js"></script>

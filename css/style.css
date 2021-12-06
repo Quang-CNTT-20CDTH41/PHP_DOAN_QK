@@ -50,6 +50,10 @@
 }
 
 /* !COLOR */
+.yellow {
+  color: orange !important;
+}
+
 /* ___HEADER____ */
 * {
   margin: 0;
@@ -355,6 +359,19 @@ ul {
 }
 
 /* !____MAIN____ */
+#reply:hover {
+  color: #009981;
+  cursor: grab;
+}
+
+.textComment {
+  display: none;
+}
+
+#checkbox:checked ~ .textComment {
+  display: block;
+}
+
 /* FOOTER */
 #footer .header-color {
   border-radius: 15px;

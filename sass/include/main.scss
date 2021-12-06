@@ -162,3 +162,15 @@
 }
 /* !____MAIN____ */
 
+#reply:hover{
+    color: $title-color;
+    cursor: grab;
+}
+
+.textComment{
+    display: none;
+}
+
+#checkbox:checked ~ .textComment{
+    display: block;
+}
