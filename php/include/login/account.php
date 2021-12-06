@@ -7,10 +7,10 @@
 <div class="container">
     <h4 class="text-center">Thông tin khách hàng</h4>
     <ul class="nav nav-pills mb-3">
-        <li class="nav-item">
+        <li>
             <a class="nav-link text-color <?php if(isset($_GET['profile'])){echo 'active"';};?>" href="index.php?page=login&action=account&profile">Tài khoản</a>
         </li>
-        <li class="nav-item">
+        <li>
             <a class="nav-link text-color <?php if(isset($_GET['change'])){echo 'active"';};?>"  href="index.php?page=login&action=account&change">Thay đổi thông tin</a>
         </li>
     </ul>
@@ -60,10 +60,8 @@
                             <input type="text" name="fullname" id="fullname" class="form-control" value="<?= $_SESSION['info'][0] ?>">
                         </div>
                     </div>
-                    <a href="./index.php?page=login&action=account&change=password" class="btn btn-success">Đổi mật khẩu</a>
-                    <div class="<?php if(isset($_GET['change'])) $change = $_GET['change']; 
-                                    echo(($change == 'password') ? 'd-block' :  'd-none');
-                                ?>">
+                    <div class="btn btn-success" id="changePassword">Đổi mật khẩu</div>
+                    <div class="d-none" id="hiddenPassword">
                         <div class="row">
                             <label for="passwordold" class="col-form-label col-sm-3"><h6>Mật khẩu cũ</h6></label>
                             <div class="col-sm-5">
@@ -126,3 +124,22 @@
     </div>
 
 </div>
+
+<script>
+    changePassword = document.getElementById('changePassword');
+    hiddenPassword = document.getElementById('hiddenPassword');
+    i = 1;
+    changePassword.addEventListener('click', function () {
+        switch(i){
+            case 1:
+                hiddenPassword.setAttribute('class', 'd-block');
+                i = -1;
+                break;
+            case -1:
+                hiddenPassword.setAttribute('class', 'd-none');
+                i = 1;
+                break;
+        }
+    });
+
+</script>
