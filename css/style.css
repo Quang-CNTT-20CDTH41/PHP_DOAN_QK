@@ -372,6 +372,10 @@ ul {
   display: block;
 }
 
+.sao:hover i {
+  color: orange !important;
+}
+
 /* FOOTER */
 #footer .header-color {
   border-radius: 15px;

@@ -174,3 +174,7 @@
 #checkbox:checked ~ .textComment{
     display: block;
 }
+
+.sao:hover i{
+    color: orange !important;
+}

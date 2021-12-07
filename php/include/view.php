@@ -93,23 +93,23 @@
                 <h4 class="header-text">Bình luận về <?php echo $result['product_name'] ?> - Chính hãng</h4>
                 <div class="d-flex">
                     <div class="row">
-                        <label for="start1" class="col-form-label font-size-20" id='label1'><i id="i1" class="bi bi-star"></i></label>
+                        <label for="start1" class="col-form-label font-size-20 sao" id='label1'><i id="i1" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="1" name="star" id="start1">
                     </div>
                     <div class="row mx-1">
-                        <label for="start2" class="col-form-label font-size-20"><i  id="i2" class="bi bi-star"></i></label>
+                        <label for="start2" class="col-form-label font-size-20 sao"><i  id="i2" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="2" name="star" id="start2">
                     </div>
                     <div class="row">
-                        <label for="start3" class="col-form-label font-size-20"><i  id="i3" class="bi bi-star"></i></label>
+                        <label for="start3" class="col-form-label font-size-20 sao"><i  id="i3" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="3" name="star" id="start3">
                     </div>
                     <div class="row mx-1">
-                        <label for="start4" class="col-form-label font-size-20"><i  id="i4" class="bi bi-star"></i></label>
+                        <label for="start4" class="col-form-label font-size-20 sao"><i  id="i4" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="4" name="star" id="start4">
                     </div>
                     <div class="row">
-                        <label for="start5" class="col-form-label font-size-20"><i  id="i5" class="bi bi-star"></i></label>
+                        <label for="start5" class="col-form-label font-size-20 sao"><i  id="i5" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="5" name="star" id="start5">
                     </div>
                     <div class="row mx-2 pt-2">
