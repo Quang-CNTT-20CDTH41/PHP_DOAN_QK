@@ -53,10 +53,10 @@ function product($sql)
         echo '
         <div class="item bg-white py-4 px-1">
             <div class="img py-2">
-                <a href="./index.php?page=view&product_id='.$item['product_id'].'"><img src="' . $item['product_img'] . '" alt="" ></a>
+                <a href="./index.php?page=view&product_id='. $item['product_id'] .'"><img src="' . $item['product_img'] . '" alt="" ></a>
             </div>
             <div class="info  py-1">
-                <a href="./index.php?page=view&product_id='.$item['product_id'].'" class="text-decoration-none text-black fw-bold">' . $item['product_name'] . '</a>
+                <a href="./index.php?page=view&product_id='. $item['product_id'] .'" class="text-decoration-none text-black fw-bold">' . $item['product_name'] . '</a>
             <div class="price">
                 <span class="text-danger fw-bold">' . number_format($item['product_price']) . ' VNĐ</span>
                 <del class="font-size-14">' . number_format($item['price_sale']) . ' VNĐ</del>
@@ -66,7 +66,7 @@ function product($sql)
                 <span>' . $item['descript'] . '</span>
             </div>
             <div class="header-color p-1 w-75 m-auto rounded">
-                <a href="./index.php?page=view&product_id='.$item['product_id'].'" class="text-decoration-none  text-white" >Xem sản phẩm</a>
+                <a href="./index.php?page=view&product_id=' .$item['product_id']. '" class="text-decoration-none  text-white" >Xem sản phẩm</a>
             </div>
         </div>';
     }

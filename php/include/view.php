@@ -1,11 +1,46 @@
 <?php
-    if(isset($_GET['product_id'] ) &&  isset($_GET['page']) == 'view'){
-        $id = $_GET['product_id'] ;
+    if(isset($_POST['love'])){
+        if(isset($_GET['product_id'])){
+            $product_id = $_GET['product_id'];
+            $sqlCheckLove = 'select * from love';
+            $resultCheckLove = executeResult($sqlCheckLove);
+            $kt = true;
+            foreach($resultCheckLove as $item) {
+                if($item['account_id'] == $_SESSION['info'][9] && $item['product_id'] == $product_id){
+                    $kt = false;
+                    break;
+                }
+            }
+
+            if($kt == true){
+                $sqlLove = 'insert into love(product_id, account_id) value("'. $product_id .'", "'. $_SESSION['info'][9] .'")';
+                echo '<script>alert("Bạn đã yêu thích sản phẩm!");</script>';
+            }else if($kt == false){
+                $sqlLove = 'delete from love where product_id = ' . $product_id . ' and account_id = ' . $_SESSION['info'][9];
+                echo '<script>alert("Bạn đã bỏ yêu thích sản phẩm!");</script>';
+            }
+            execute($sqlLove);
+        }
     }
-    $sql = "select * from products where `product_id` = ".$id;
-    $sql1 = "select * from info where `product_id` = ".$id;
-    $result = executeSingleResult($sql);
-    $resultView = executeSingleResult($sql1);
+
+    $sqlShowLove = 'select count(quantity) as soluong from love where product_id = ' .  $_GET['product_id'];
+    $resultShowLove =  executeSingleResult($sqlShowLove);
+
+    function showLove() {
+        $sql = 'select * from love';
+        $result = executeResult($sql);
+        $ktShow = false;
+        foreach($result as $item){
+            if($item['account_id'] == $_SESSION['info'][9] && $item['product_id'] == $_GET['product_id']){
+               $ktShow = true; break;
+            }
+        }
+        if($ktShow){
+            return '<i class="bi bi-heart-fill font-size-20 pt-4 text-danger"></i>';
+        }else{
+            return '<i class="bi bi-heart font-size-20 pt-4"></i>';
+        }
+    }
 ?>
 <section id="main">
     <div class="container">
@@ -16,70 +51,86 @@
             </div>
             <div class="col-content list-prodcut text-center d-flex flex-wrap justify-content-center">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 bg-white rounded border"  style="line-height: 470px;">
-                            <img sty src="<?php echo $result['product_img'] ?>" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card border-secondary">
-                                <div class="card-header">
-                                    <h2 class="card-title">
-                                        <?php echo $result['product_name'] ?>
-                                    </h2>
+                    <?php
+                        if(isset($_GET['page']) == 'view' && isset($_GET['product_id'])){
+                            $id = (int) $_GET['product_id'];
+                            $sqlView = 'select * from products inner join info where products.product_id = info.product_id and info.product_id = '. $id;
+                            $resultView = executeSingleResult($sqlView);
+                            if($resultView != null){
+                                echo '<div class="row">
+                                <div class="col-md-4 bg-white rounded border"  style="line-height: 470px;">
+                                    <img sty src="'. $resultView['product_img'] .'" class="img-fluid">
                                 </div>
-                                <div class="card-body text-center">
-                                    <div class="container ">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <b class="text-dark">Thời gian bảo hành : </b> 1 năm
-                                                <table style="margin-top: 13px" class="table table-striped table-bordered table-hover">
-                                                    <tbody>
-                                                   
-                                                    <tr>
-                                                        <td style="font-weight: bold;width: 50%">Màn hình:</td>
-                                                        <td><?php echo $resultView['display'];?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-weight: bold">Camera sau:</td>
-                                                        <td><?php echo $resultView['camerasau'];?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-weight: bold">Camera sau:</td>
-                                                        <td><?php echo $resultView['cameratruoc'];?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-weight: bold">Chip:</td>
-                                                        <td><?php echo $resultView['chip'];?></td>
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                        <td style="font-weight: bold">RAM, ROM:</td>
-                                                        <td><?php echo $resultView['ram'];?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-weight: bold">Pin, Sạc:</td>
-                                                        <td><?php echo $resultView['pin'];?></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                <div class="col-md-8">
+                                    <div class="card border-secondary">
+                                        <div class="card-header">
+                                            <h2 class="card-title">
+                                                ' .$resultView['product_name'] .'
+                                            </h2>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <div class="container ">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <b class="text-dark">Thời gian bảo hành : </b> 1 năm
+                                                        <table style="margin-top: 13px" class="table table-striped table-bordered table-hover">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-weight: bold;width: 50%">Màn hình:</td>
+                                                                    <td>' .$resultView['display'] . '</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold">Camera sau:</td>
+                                                                    <td>' .$resultView['camerasau'] . '</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold">Camera sau:</td>
+                                                                    <td>' .$resultView['cameratruoc'] . '</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold">Chip:</td>
+                                                                    <td>' .$resultView['chip'] . '</td>
+                                                                </tr>
+                                                                
+                                                                <tr>
+                                                                    <td style="font-weight: bold">RAM, ROM:</td>
+                                                                    <td>' .$resultView['ram'] . '</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold">Pin, Sạc:</td>
+                                                                    <td>' .$resultView['pin'] . '</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="font-size-20 fw-bold text-danger">
+                                                            '. number_format($resultView['product_price']) .' VNĐ
+                                                        </span>
+                                                        <del class="text-muted px-2">
+                                                        '. number_format($resultView['price_sale']) .' VNĐ</del>
+                                                        <form action="" method="post" class="float-end px-5">
+                                                            <button class="border-0 bg-white" name="love">'.  showLove() .'</button>
+                                                            <span>'.  $resultShowLove['soluong'] .' yêu thích</span>
+                                                        </form>
+                                                    </div> 
+                                                    <div class="col-md-12">
+                                                    <a  href="./index.php?page=cart&id='. $resultView['product_id'] .'" 
+                                                    class="btn text-white add-to-cart" style="background-color: #00483d;margin-top:5px">Thêm vào giỏ hàng
+                                                        </a>
+                                                </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <span style="font-size: 20px;font-weight: bold;color: red">
-                                                    <?php  echo number_format($result['product_price']);?> VNĐ
-                                                </span>
-                                                <span style="text-decoration: line-through;padding-left: 10px" class="text-muted">
-                                                <?php echo number_format($result['price_sale']);?> VNĐ</span>
-                                            </div> 
-                                            <div class="col-md-12">
-                                            <a  href="./index.php?page=cart&id=<?php echo $result['product_id']?>" 
-                                            class="btn text-white add-to-cart" style="background-color: #00483d;margin-top:5px">Thêm vào giỏ hàng
-                                                </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div>';
+                            }else{
+                                echo 'Sản phẩm không tồn tại';
+                                require './php/include/footer.php';
+                                die();
+                            }
+                        } 
+                    ?>
                 </div>
             </div>
         </div>
@@ -90,10 +141,10 @@
     <div class="border border-success rounded mt-3">
         <form action="" method="post">
             <div class="p-4 mt-1 my-5">
-                <h4 class="header-text">Bình luận về <?php echo $result['product_name'] ?> - Chính hãng</h4>
+                <h4 class="header-text">Bình luận về <?php echo $resultView['product_name'] ?> - Chính hãng</h4>
                 <div class="d-flex">
                     <div class="row">
-                        <label for="start1" class="col-form-label font-size-20 sao" id='label1'><i id="i1" class="bi bi-star"></i></label>
+                        <label for="start1" class="col-form-label font-size-20 sao"><i id="i1" class="bi bi-star"></i></label>
                         <input type="radio" class="d-none" value="1" name="star" id="start1">
                     </div>
                     <div class="row mx-1">
@@ -156,5 +207,5 @@
     </div>
     
 
-</section>
+</section> -->
 <script src="./js/star.js"></script>
