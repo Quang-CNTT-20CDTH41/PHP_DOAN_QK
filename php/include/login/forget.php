@@ -65,14 +65,13 @@ if(isset($_POST['very'])){
         </form>
 
         <form action="" method="post" class="<?php echo $veryForm?>">
-        
-        <div class="row">
-                <label for="password" class="col-form-label col-sm-5">
-                    <h4>Mật khẩu mới</h4>
-                </label>
-                <div class="col-sm-7">
-                    <input type="password" name="password" id="password" placeholder="Nhập Mật Khẩu Mới" class="form-control">
-                </div>
+            <div class="row">
+                    <label for="password" class="col-form-label col-sm-5">
+                        <h4>Mật khẩu mới</h4>
+                    </label>
+                    <div class="col-sm-7">
+                        <input type="password" name="password" id="password" placeholder="Nhập Mật Khẩu Mới" class="form-control">
+                    </div>
             </div>
             <div class="row">
                 <label for="confirm" class="col-form-label col-sm-5">

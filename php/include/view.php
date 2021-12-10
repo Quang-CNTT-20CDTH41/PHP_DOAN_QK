@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['love'])){
-        if(isset($_GET['product_id'])){
+        if(isset($_GET['product_id']) && isset($_SESSION['info'])){
             $product_id = $_GET['product_id'];
             $sqlCheckLove = 'select * from love';
             $resultCheckLove = executeResult($sqlCheckLove);
@@ -20,6 +20,8 @@
                 echo '<script>alert("Bạn đã bỏ yêu thích sản phẩm!");</script>';
             }
             execute($sqlLove);
+        }else{
+            echo '<script>alert("Vui lòng đăng nhập!");</script>';
         }
     }
 
@@ -30,9 +32,11 @@
         $sql = 'select * from love';
         $result = executeResult($sql);
         $ktShow = false;
-        foreach($result as $item){
-            if($item['account_id'] == $_SESSION['info'][9] && $item['product_id'] == $_GET['product_id']){
-               $ktShow = true; break;
+        if(isset($_SESSION['info'])){
+            foreach($result as $item){
+                if($item['account_id'] == $_SESSION['info'][9] && $item['product_id'] == $_GET['product_id']){
+                   $ktShow = true; break;
+                }
             }
         }
         if($ktShow){

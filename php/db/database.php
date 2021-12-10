@@ -196,6 +196,8 @@ if(isset($_POST['comment'])){
         $sqlReview = 'insert into reviews(review_name, time, comment, star, product_id) value("'. $_SESSION['info'][0] .'", "'. $date .'", "'. $textarea .'", "'. $star .'", "'. $product_id .'")';
         execute($sqlReview);
         echo '<script>alert("Bình luận thành công!.");</script>';
+    }else{
+        echo '<script>alert("Vui lòng đăng nhập!");</script>';
     }
 }
 
