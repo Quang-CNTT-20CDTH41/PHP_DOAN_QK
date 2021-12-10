@@ -4,15 +4,21 @@ require_once('./php/db/variable.php');
 // ĐĂNG KÝ TÀI KHOẢN
 if (isset($_POST['create'])) {
     if ($usernameErr == '' && $fullnameErr == '' && $passwordErr == '' && $confirmErr == '' && $emailErr == '' && $phonenumberErr == '' && $addressErr == '') {
-        $sqlLogin = 'select * from `user` where user_name = "' . $username . '"';
-        $resultLogin = executeSingleResult($sqlLogin);
-        if ($resultLogin == 0) {
+        $sqlLogin = 'select * from `user`';
+        $resultLogin = executeResult($sqlLogin);
+        $kt = true;
+        foreach($resultLogin as $item){
+            if ($item['email'] ==  $email || $item['user_name'] ==  $username ) {
+                $kt = false;
+                echo '<script>alert("Tên tài khoản hoặc email đã tồn tại.");</script>';
+                break;
+            }
+        }
+        if($kt){
             $sqlCreateAccount = 'insert into user(hoten, gender, user_name, password, birthday, address, email, phone) 
             values("' . $fullname . '", "' . $gender . '", "' . $username . '", "' . md5($password) . '", "' . $birthday . '", "' . $address . '", "' . $email . '", "' . $phonenumber . '")';
             execute($sqlCreateAccount);
             echo '<script>alert("Đăng ký thành công.");</script>';
-        } else {
-            echo '<script>alert("Tên tài khoản đã tồn tại.");</script>';
         }
     }
 }

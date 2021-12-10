@@ -9,7 +9,7 @@
                 <input type="text" name="fullname" id="fullname" placeholder="Nhập tên của bạn" class="form-control" value="<?= $fullname?>">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $fullnameErr?></span>
+                <span class="text-warning">* <?php echo $fullnameErr?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -18,7 +18,7 @@
                 <input type="text" name="username" id="username" placeholder="Nhập tài khoản" class="form-control" value="<?= $username?>">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $usernameErr?></span>
+                <span class="text-warning">* <?php echo $usernameErr?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -27,7 +27,7 @@
                 <input type="password" name="password" id="password" placeholder="Nhập mật khẩu" class="form-control">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $passwordErr?></span>
+                <span class="text-warning">* <?php echo $passwordErr?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -36,7 +36,7 @@
                 <input type="password" name="confirm" id="confirm" placeholder="Nhập lại mật khẩu" class="form-control">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $confirmErr?></span>
+                <span class="text-warning">* <?php echo $confirmErr?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -45,7 +45,7 @@
                 <input type="text" name="email" id="email" placeholder="Nhập Email của bạn" class="form-control"  value="<?= $email?>">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $emailErr ?></span>
+                <span class="text-warning">* <?php echo $emailErr ?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -73,7 +73,7 @@
                 <input type="phone" name="phonenumber" id="phonenumber" class="form-control" placeholder="0708050907" value="<?= $phonenumber?>">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $phonenumberErr?></span>
+                <span class="text-warning">* <?php echo $phonenumberErr?></span>
             </div>
         </div>
         <div class="row my-1">
@@ -82,20 +82,20 @@
                 <input type="text" name="address" id="address" class="form-control" placeholder="Nhập địa chỉ của bạn" value="<?= $address?>">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger">* <?php echo $addressErr?></span>
+                <span class="text-warning">* <?php echo $addressErr?></span>
             </div>
         </div>
         <div class="form-check form-switch d-flex">
             <input class="form-check-input" type="checkbox" id="terms" name="terms">
             <label class="form-check-label mx-2" for="terms"> Đồng ý điều khoản. </label> 
             <div class="col-sm-5">
-                <span class="text-danger mx-2">* <?php echo $termsErr ?></span>
+                <span class="text-warning mx-2">* <?php echo $termsErr ?></span>
             </div>
         </div>
         <div class="button d-flex justify-content-center">
             <button type="submit" class="btn btn-primary" name="create">Đăng ký</button>
             <button type="submit" class="btn btn-success mx-2" name="login">
-                    <a href="./index.php?page=login&action=dangnhap" class="text-decoration-none text-white">Đăng nhập</a>
+                    <a href="./index.php?page=login&action=dangnhap" class="text-white text-decoration-none text-white">Đăng nhập</a>
             </button>
         </div>
         <div class="forgotpass">

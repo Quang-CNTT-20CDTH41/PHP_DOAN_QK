@@ -275,6 +275,9 @@ ul {
 #main .container .smart-phone .col-content .item .header-color:hover, #main .container .all-product .col-content .item .header-color:hover {
   background: #009981;
 }
+#main .container .smart-phone .col-content .item:hover, #main .container .all-product .col-content .item:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 15px 0px;
+}
 #main .container .title-product {
   overflow: hidden;
   height: 33px;
