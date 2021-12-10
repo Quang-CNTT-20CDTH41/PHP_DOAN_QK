@@ -18,6 +18,9 @@
                             case 'account': 
                                 require_once('./php/include/login/account.php');
                                 break;
+                            case 'forget': 
+                                require_once('./php/include/login/forget.php');
+                                break;
                             default:
                                 require_once('./php/include/login/dangnhap.php');
                         }

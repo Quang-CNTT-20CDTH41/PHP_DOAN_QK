@@ -48,7 +48,8 @@
                             }
                         }else{
                             echo '<li><a href="./index.php?page=login&action=dangnhap">Đăng nhập</a></li>
-                            <li><a href="./index.php?page=login&action=dangky">Đăng ký</a></li>';
+                            <li><a href="./index.php?page=login&action=dangky">Đăng ký</a></li>
+                            <li><a href="./index.php?page=login&action=forget">Quên mật khẩu</a></li>';
                         }
                     ?>
                 </ul>

@@ -42,7 +42,7 @@
                 </button>
             </div>
             <div class="forgotpass">
-                <a href="#" class="text-decoration-none float-end text-white h6">Quên mật khẩu?</a>
+                <a href="./index.php?page=login&action=forget" class="text-decoration-none float-end text-white h6">Quên mật khẩu?</a>
             </div>
         </form>
     </div>
